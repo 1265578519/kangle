@@ -1,0 +1,38 @@
+<!--#start 61 -->
+<config>
+<listen ip='*' port='3312' type='http' />
+<listen ip='*' port='3313' type='http' />
+<extends>
+<!--
+<api name='php52' file='%{config_dir}/libphp5.so' type='pmt' life_time='60'>
+<env PHPRC='%{config_dir}/etc/php.ini'/>
+<pre_event src_file='%{config_dir}/etc/php-templete.ini' dst_file='%{config_dir}/etc/php.ini'/>
+</api>
+<vhs  index='index.php'>
+<map file_ext='php' extend='api:php52' allow_method='*'/>
+</vhs>
+-->
+<cmd name='php52' file='/usr/bin/php-cgi' listen='local' lock='0' type='mp' proto='fastcgi'>
+<pre_event src_file='%{config_dir}/php-templete.ini' dst_file='/tmp/php-${name}.ini'/>
+<env PHP_FCGI_MAX_REQUESTS='0' PHPRC='/tmp/php-${name}.ini'/>
+</cmd>
+<cmd name='nodephp' file='/vhs/kangle/ext/tpl_php5611/bin/php-cgi' listen='local' lock='0' type='mp' proto='fastcgi'>
+<env PHP_FCGI_MAX_REQUESTS='0' PHPRC='/vhs/kangle/ext/tpl_php52/etc/php-node-5611.ini'/>
+</cmd>
+</extends>
+<vhs>
+<vh name='_webftp' doc_root='nodewww/webftp' index='index.html,index.php' app_share='0' inherit='off' max_worker='12' htaccess='htaccess'>
+<map file_ext='php' extend='cmd:nodephp' allow_method='*'/>
+<port>3312</port>
+<host>*</host>
+</vh>
+<vh name='_dbadmin' doc_root='nodewww/dbadmin' index='index.html,index.php' app_share='0' inherit='off' max_worker='12' user='#990' group='#990'>
+<map file_ext='php' extend='cmd:nodephp' allow_method='*'/>
+<port>3313</port>
+<host>*</host>
+</vh>
+<vh_templete name='php:php52' templete='html' index='index.php'>
+<map file_ext='php' extend='cmd:php52' allow_method='*'/>
+</vh_templete>
+</vhs>
+</config>

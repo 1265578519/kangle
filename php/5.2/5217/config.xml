@@ -1,0 +1,13 @@
+<!--#start 61-->
+<config>
+<cmd name='php5217' file='%{config_dir}/bin/php-cgi' listen='local' lock='0' type='mp' proto='fastcgi'>
+<pre_event src_file='%{config_dir}/php-templete.ini' dst_file='/tmp/php-${name}.ini'/>
+<env PHP_FCGI_MAX_REQUESTS='0' PHPRC='/tmp/php-${name}.ini'/>
+</cmd>
+<vhs  index='index.php'>
+<map file_ext='php' extend='cmd:php5217' allow_method='*'/>
+</vhs>
+<vh_templete name='php:php5217' templete='html' index='index.php'>
+<map file_ext='php' extend='cmd:php5217' allow_method='*'/>
+</vh_templete>
+</config>
