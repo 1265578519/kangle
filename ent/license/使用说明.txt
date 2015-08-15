@@ -1,0 +1,35 @@
+kangle商业版体验授权
+本授权由小樱提供，属于非正版体验授权，只用于环境学习，防CC攻击交流与体验试用之用。
+任何人不得私自发布到任何破解网站或用于商业用途，如私自发布或用于商业用途造成的版权问题本人概不负责。
+支持商业版一切模块功能，可打开完美抗CC攻击，黑名单，隔离攻击，JAVA，防采集等模块。
+体验授权时间到2015-11-21日，请与体验后24小时内删除 如果喜欢此软件请支持正版。
+
+
+使用方法
+centos 6
+执行运行升级命令，免费版将会升级到商业版
+yum -y install wget;wget https://raw.githubusercontent.com/1265578519/kangle/master/ent/e.sh -O e.sh;sh e.sh /vhs/kangle
+
+然后把授权文件license.txt复制到/vhs/kangle目录下，然后执行重启kangle命令
+/vhs/kangle/bin/kangle -q
+/vhs/kangle/bin/kangle
+
+
+windows
+32位：https://raw.githubusercontent.com/1265578519/kangle/master/ent/kangle-ent-3.4.8.msi
+
+64位：https://raw.githubusercontent.com/1265578519/kangle/master/ent/kangle-ent-3.4.8-x64.msi
+
+windows方法如上，复制license.txt到安装目录下，然后通过cmd重启kangle或者直接重启服务器即可。
+
+
+
+
+kangle免费版安装教程
+kangle web server，linux centos 6 一键安装包，设置优化图解，DDOS Firewall 防火墙
+http://bbs.itzmx.com/thread-7232-1-1.html
+
+
+
+
+出处地址：http://bbs.itzmx.com/thread-9395-1-1.html
