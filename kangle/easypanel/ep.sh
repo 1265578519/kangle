@@ -130,7 +130,7 @@ function setup_system
 	yum -y install wget make gcc gcc-c++
 	yum -y install pcre-devel zlib-devel
 	yum -y install openssl-devel sqlite-devel
-	yum -y install quota
+	yum -y install quota unzip bzip2
 }
 function stat_iptables
 {
