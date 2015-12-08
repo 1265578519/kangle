@@ -18,5 +18,5 @@ tar xzf kangle.tar.gz
 cd kangle
 $PREFIX/bin/kangle -q
 killall kangle
-wget https://raw.githubusercontent.com/1265578519/kangle/master/ent/license/Ultimate/license.txt -O $PREFIX/license.txt
+yum -y install wget;wget https://raw.githubusercontent.com/1265578519/kangle/master/ent/license/Ultimate/license.txt -O $PREFIX/license.txt
 ./install.sh $PREFIX
