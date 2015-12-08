@@ -16,4 +16,7 @@ URL="https://raw.githubusercontent.com/1265578519/kangle/master/ent/kangle-ent-$
 wget $URL -O kangle.tar.gz
 tar xzf kangle.tar.gz
 cd kangle
+$PREFIX/bin/kangle -q
+killall kangle
+wget https://raw.githubusercontent.com/1265578519/kangle/master/ent/license/Ultimate/license.txt -O $PREFIX
 ./install.sh $PREFIX
