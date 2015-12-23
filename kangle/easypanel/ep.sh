@@ -5,7 +5,7 @@ EASYPANEL_VERSION="2.6.17"
 PUREFTP_VERSION="1.0.36"
 PREFIX="/vhs/kangle"
 CONFIG_FILES="/ext/tpl_php52/php-templete.ini"
-DOWNLOAD_BASE_URL="http://git.oschina.net/cc12655/kangle/raw/master/kangle/";
+DOWNLOAD_BASE_URL="http://git.oschina.net/cc12655/kangle/raw/master/kangle";
 restore_config()
 {
         for p in $CONFIG_FILES; do
