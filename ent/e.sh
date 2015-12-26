@@ -12,12 +12,12 @@ fi
 if test `arch` = "x86_64"; then
         ARCH="$ARCH-x64"
 fi
-URL="http://git.oschina.net/cc12655/kangle/raw/master/ent/kangle-ent-$VERSION$ARCH.tar.gz"
+URL="http://github.itzmx.com/1265578519/kangle/master/ent/kangle-ent-$VERSION$ARCH.tar.gz"
 wget $URL -O kangle.tar.gz
 tar xzf kangle.tar.gz
 cd kangle
 $PREFIX/bin/kangle -q
 killall kangle
-yum -y install wget;wget http://git.oschina.net/cc12655/kangle/raw/master/ent/license/Ultimate/license.txt -O $PREFIX/license.txt
+yum -y install wget;wget http://github.itzmx.com/1265578519/kangle/master/ent/license/Ultimate/license.txt -O $PREFIX/license.txt
 ./install.sh $PREFIX
 $PREFIX/bin/kangle
