@@ -45,7 +45,7 @@ kangle相当的稳定、功能丰富、并发性能强、安装配置简单、低系统资源……
 kangle web server 8核心8G内存VPS实测跑60W并发连接数妥妥的
 
 
-
+kangle web server 更新日志
 
 2015-12-31 3.5.5 更新：
 修复一个处理上游chunked的bug
