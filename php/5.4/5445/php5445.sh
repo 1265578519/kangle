@@ -48,5 +48,21 @@ wget -c http://github.itzmx.com/1265578519/kangle/master/php/5.4/5445/ioncube-$Z
 unzip ioncube-$ZEND_ARCH-5.4.zip
 mkdir -p $PREFIX/ioncube
 mv ioncube_loader_lin_5.4.so $PREFIX/ioncube/ioncube_loader_lin_5.4.so
+#install apcu
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/5.4/5445/apcu-4.0.10.tgz
+tar zxf apcu-4.0.10.tgz
+cd apcu-4.0.10
+/vhs/kangle/ext/tpl_php5445/bin/phpize
+./configure --with-php-config=/vhs/kangle/ext/tpl_php5445/bin/php-config
+make -j 4
+make install
+#install memcache
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/5.4/5445/memcache-3.0.8.tgz
+tar zxf memcache-3.0.8.tgz
+cd memcache-3.0.8
+/vhs/kangle/ext/tpl_php5445/bin/phpize
+./configure --with-php-config=/vhs/kangle/ext/tpl_php5445/bin/php-config
+make -j 4
+make install
 rm -rf /tmp/*
 /vhs/kangle/bin/kangle -r

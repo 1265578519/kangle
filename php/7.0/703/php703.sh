@@ -41,5 +41,13 @@ wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.0/703/ioncube-$ZE
 unzip ioncube-$ZEND_ARCH-5.6.zip
 mkdir -p $PREFIX/ioncube
 mv ioncube_loader_lin_5.6.so $PREFIX/ioncube/ioncube_loader_lin_5.6.so
+#install apcu
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.0/703/apcu-5.1.3.tgz
+tar zxf apcu-5.1.3.tgz
+cd apcu-5.1.3
+/vhs/kangle/ext/tpl_php703/bin/phpize
+./configure --with-php-config=/vhs/kangle/ext/tpl_php703/bin/php-config
+make -j 4
+make install
 rm -rf /tmp/*
 /vhs/kangle/bin/kangle -r

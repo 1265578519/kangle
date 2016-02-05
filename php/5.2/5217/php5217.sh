@@ -40,7 +40,6 @@ wget -c http://github.itzmx.com/1265578519/kangle/master/php/5.2/5217/zend-3.3.9
 tar xjf zend-3.3.9-$ZEND_ARCH.tar.bz2
 mv zend-3.3.9-$ZEND_ARCH $PREFIX/zend
 wget -c http://github.itzmx.com/1265578519/kangle/master/php/5.2/5217/zend.ini -O $PREFIX/etc/php.d/zend.ini
-
 #install ioncube
 wget -c http://github.itzmx.com/1265578519/kangle/master/php/5.2/5217/ioncube-$ZEND_ARCH-5.2.zip
 unzip ioncube-$ZEND_ARCH-5.2.zip
@@ -49,5 +48,21 @@ mv ioncube_loader_lin_5.2.so $PREFIX/ioncube/ioncube_loader_lin_5.2.so
 wget -c http://github.itzmx.com/1265578519/kangle/master/php/5.2/5217/ioncube.ini -O $PREFIX/etc/php.d/ioncube.ini
 rm -rf $PREFIX/php-templete.ini
 wget http://github.itzmx.com/1265578519/kangle/master/php/5.2/5217/php-templete.ini -O $PREFIX/php-templete.ini
+#install apcu
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/5.2/5217/apcu-4.0.10.tgz
+tar zxf apcu-4.0.10.tgz
+cd apcu-4.0.10
+/vhs/kangle/ext/tpl_php5217/bin/phpize
+./configure --with-php-config=/vhs/kangle/ext/tpl_php5217/bin/php-config
+make -j 4
+make install
+#install memcache
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/5.2/5217/memcache-3.0.8.tgz
+tar zxf memcache-3.0.8.tgz
+cd memcache-3.0.8
+/vhs/kangle/ext/tpl_php5217/bin/phpize
+./configure --with-php-config=/vhs/kangle/ext/tpl_php5217/bin/php-config
+make -j 4
+make install
 rm -rf /tmp/*
 /vhs/kangle/bin/kangle -r
