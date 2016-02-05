@@ -25,7 +25,7 @@ if test $? != 0; then
 	echo "configure php error";
 	exit 1
 fi
-make
+make -j 4
 make install
 mkdir -p $PREFIX/etc/php.d
 if [ ! -f $PREFIX/php-templete.ini ]; then
