@@ -36,6 +36,12 @@ if [ ! -f $PREFIX/config.xml ]; then
 fi
 cd ..
 wget http://github.itzmx.com/1265578519/kangle/master/php/5.6/5618/php-templete.ini -O $PREFIX/php-templete.ini
+#install zend
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/5.6/5618/zend-loader-php5.6-linux-$ZEND_ARCH.tar.gz
+tar zxf zend-loader-php5.6-linux-$ZEND_ARCH.tar.gz
+cd zend-loader-php5.6-linux-$ZEND_ARCH
+mkdir -p $PREFIX/zend
+mv ZendGuardLoader.so $PREFIX/zend/ZendGuardLoader.so
 #install ioncube
 wget -c http://github.itzmx.com/1265578519/kangle/master/php/5.6/5618/ioncube-$ZEND_ARCH-5.6.zip
 unzip ioncube-$ZEND_ARCH-5.6.zip
