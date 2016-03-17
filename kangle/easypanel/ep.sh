@@ -1,7 +1,7 @@
 #/bin/sh
-KANGLE_VERSION="3.5.5"
+KANGLE_VERSION="3.5.6"
 PHP_VERSION="5.2.17"
-EASYPANEL_VERSION="2.6.17"
+EASYPANEL_VERSION="2.6.18"
 PUREFTP_VERSION="1.0.36"
 PREFIX="/vhs/kangle"
 CONFIG_FILES="/ext/tpl_php52/php-templete.ini"
@@ -107,7 +107,7 @@ function setup_kangle
 	tar xzf kangle-$KANGLE_VERSION.tar.gz
 	cd kangle-$KANGLE_VERSION
 	find|xargs touch
-	./configure --prefix=/vhs/kangle --enable-vh-limit --enable-disk-cache --enable-ipv6 --enable-ssl
+	./configure --prefix=/vhs/kangle --enable-vh-limit --enable-disk-cache --enable-ipv6 --enable-ssl --enable-http2
 	if [ $? != 0 ] ; then
                  exit $?
         fi
