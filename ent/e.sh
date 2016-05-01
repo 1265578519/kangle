@@ -17,8 +17,9 @@ wget $URL -O kangle.tar.gz
 tar xzf kangle.tar.gz
 cd kangle
 $PREFIX/bin/kangle -q
-sleep 10
+sleep 3
 killall -9 kangle
+sleep 3
 yum -y install wget;wget http://github.itzmx.com/1265578519/kangle/master/ent/license/Ultimate/license.txt -O $PREFIX/license.txt
 ./install.sh $PREFIX
 $PREFIX/bin/kangle
