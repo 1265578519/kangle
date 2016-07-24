@@ -361,4 +361,9 @@ if [ ! -f /etc/php.d/ioncube.ini ] ; then
 	\cp /vhs/kangle/bin/ioncube.ini /etc/php.d/ioncube.ini
 fi
 wget  http://localhost:3312/upgrade.php -O /dev/null -q
+$PREFIX/bin/kangle -q
+sleep 3
+killall -9 kangle
+sleep 3
+$PREFIX/bin/kangle
 echo "Please visit http://ip:3312/admin/ to continue."
