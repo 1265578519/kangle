@@ -1,0 +1,198 @@
+<script type='text/javascript'>
+var msg = '{{$msg}}';
+	function changePassword() {
+	}
+	function rebootProcess()
+	{
+		if (confirm("确定要重启吗？这将对你现在运行中的网站中断请求！")) {
+			$.get("?c=index&a=rebootProcess", function(data) {
+				alert(data);
+			});
+		}
+	}
+	jQuery(document).ready(function() {
+		jQuery(".item").mouseover(function() {
+			jQuery(this).addClass('onMouseOver');
+		});
+		jQuery(".item").mouseout(function() {
+			jQuery(this).removeClass('onMouseOver');
+		});
+		if (msg != '') {
+			var dlog = art.dialog({id:'id232',time:3,content:msg,title:'提示',icon: 'warning',top:'53%'});
+		}
+	});
+	var webmit = '{{$user.web_quota}}';//{{$quota.web_limit}}在linux下得不到
+	if (webmit == '') {
+		webmit = 0;
+	}
+	if (webmit > 0) {
+		var web_used = '{{$quota.web_used}}';
+		if (web_used == '') {
+			web_used = 0;
+		}
+		var web_use_len = (web_used / webmit) * 100;
+		//web_use_len = 30;
+		var dbmit = '{{$quota.db_limit}}';
+		var db_used = '{{$quota.db_used}}';
+		if (db_used == '') {
+			db_used = 0;
+		}
+		if (dbmit == "") {
+			dbmit = 0;
+		}
+		if (dbmit > 0) {
+			var db_use_len = (db_used / dbmit) * 100;
+		}
+		jQuery(document).ready(function() {
+			if (web_use_len != null && web_use_len != 'undefined') {
+								if (web_use_len < 1) {
+									web_use_len = 1;
+								}
+								if (web_use_len > 100) {
+									web_use_len = 100;
+								}
+								jQuery("#webdd").html("网页空间：<div class='web_ww' title='大小："
+														+ webmit
+														+ "M   已使用："
+														+ web_use_len.toFixed(2)
+														+ "%'><div class='use_web' style='width:"
+														+ web_use_len.toFixed(2)
+														+ "%'></div></div>");
+							}
+							if (db_use_len != null && db_use_len != 'undefined') {
+								if (db_use_len < 1) {
+									db_use_len = 1;
+								}
+								if (db_use_len > 100) {
+									db_use_len = 100;
+								}
+								jQuery("#db").html("数据空间：<div class='web_ww' title='大小："
+														+ dbmit
+														+ "M   已使用："
+														+ db_use_len.toFixed(2)
+														+ "%'><div class='use_web' style='width:"
+														+ db_use_len.toFixed(2)
+														+ "%'  ></div></div>");
+							}
+						});
+	}
+</script>
+
+<div id="ep_main2">
+    <div class="ep_main2_general">
+	    <div class="ep_main_title">基本功能</div>
+	    <ul>
+		    <li><a class="ymbd" href='?c=domain&a=show'>域名绑定</a></li>
+		    <li><a class="xgmm" href='?c=session&a=changePasswordForm'>修改密码</a></li>
+			<li><a class="dkxz" href="?c=speed&a=speedFrom">带宽限制</a></li>
+			<li><a class="hcsz" href='?c=cache&a=cacheFrom'>缓存设置</a></li>
+			<li><a class="qchc" href="?c=cacheclean&a=cachecleanFrom">清除缓存</a></li>
+			{{if $user.cdn==0}}
+			<li><a class="cwdy" href='?c=info&a=showErrorPage'>错误码定义</a></li>
+			<li><a class="ymys" href='?c=response&a=gzipFrom'>网页压缩</a></li>
+			<li><a class="mime" href='?c=mime&a=mimeFrom'>MIME设置</a></li>
+			<li><a class="mrwj" href='?c=indexfile&a=indexfileFrom'>默认文件</a></li>
+			<li><a class="ymtz" href='?c=rewrite&a=rewriteFrom'>域名跳转</a></li>
+			<li><a class="cqjc" href='javascript:rebootProcess();'>重起进程</a></li>
+			{{if $dbadmin_url}}
+			<li><a class="sjkgl" href='{{$dbadmin_url}}' target='_blank'>数据库管理</a></li>
+			{{/if}} {{/if}}
+		</ul>
+    </div>
+			 
+	{{if $user.cdn==0}}
+    <div class="ep_main2_general">
+	    <div class="ep_main_title">空间管理</div>
+	    <ul>
+		    {{if $webftp_url}}
+		    <li><a class="zxwj" href='{{$webftp_url}}'>在线文件</a></li>
+			{{/if}}
+		    <li><a class="sjbf" href='?c=shell&a=index'>数据备份</a></li>
+			{{if $user.ftp>0}}
+			<li><a class="ftp" href='?c=index&a=ftpForm'>FTP设置</a></li>
+			{{/if}} {{if $ssl}}
+			<li><a class="ssl" href='?c=index&a=sslForm'>SSL证书</a></li>
+			{{/if}} {{if $user.ssi}}
+			<li><a class="ssi" href='?c=ssi&a=show'>SSI设置</a></li>
+            {{/if}}
+		</ul>
+    </div>
+	{{/if}}
+			 
+    <div class="ep_main2_general">
+	    <div class="ep_main_title">安全管理</div>
+	    <ul>
+		    <li><a class="jzip" href='?c=banip&a=addTableFrom'>禁止IP</a></li>
+		    <li><a class="fdl" href='?c=protection&a=addProtectionTableFrom'>防盗链</a></li>
+			<li><a class="csgl" href='?c=antisql&a=antisqlFrom'>参数过滤</a></li>
+			<li><a class="muma" href='?c=antiupload&a=antiuploadFrom'>防木马上传</a></li>
+			<li><a class="cc" href='?c=anticc&a=anticcFrom'>防CC攻击</a></li>
+		</ul>
+    </div>
+	
+    <div class="ep_main2_general">
+	    <div class="ep_main_title">高级功能</div>
+	    <ul>
+		    <li><a class="llt" href='?c=flow&a=viewFlow&t=day'>流量图</a></li>
+		    <li><a class="ljxx" href='?c=connection&a=connectionFrom'>连接信息</a></li>
+			{{if $user.cdn==0}}
+			<li><a class="rzfx" href='/vhost/log.php/' target='_blank'>日志分析</a></li>
+			<li><a class="xnfx" href='?c=capability&a=capabilityFrom'>性能分析</a></li>
+			{{if $user.cron>0}}
+			<li><a class="jhrw" href='?c=cron&a=index'>计划任务</a></li>
+			{{/if}}
+			<li><a class="http" href='?c=httpauth&a=index'>HTTP认证</a></li>
+			{{/if}}
+		</ul>
+    </div>
+</div>
+
+<div id="ep_main3">
+	<div class="ep_main_title">虚拟主机信息</div>
+	    <ul>
+		    <li>用户名：{{$user.name}}</li>
+		    <li>创建时间：{{date("Y-m-d H:i:s",$user.create_time)}}</li>
+			{{if $user.expire_time2 !=0}}
+			<li>到期时间：{{date("Y-m-d H:i:s",$user.expire_time2)}}</li>
+			{{/if}}
+			{{if $user.cdn==0}} {{if $admin}}
+			<li>网站目录:{{$user.doc_root}}</li>
+			{{/if}} {{/if}}
+			<li>主机状态：{{if $user.status==3}}<font color='red'>数据库超限</font>{{elseif $user.status==2}}<font color='red'>超流量</font>{{elseif $user.status==1}}<font color='red'>暂停</font>{{else}}<span class="vhost_check">正常{{/if}}</span></li>
+	        {{if $user.cdn==0}}
+	        <li>ftp账号:{{$user.name}}</li>
+	        <li>ftp密码:和网站密码同步</li>
+			<li id="webdd"></li>
+			{{if $quota.db_limit}}
+			<li id="db"></li>
+			{{if $user.db_type!='sqlsrv'}}
+			<li>数据库地址：{{$node.db_host}}</li>
+			<li>数据库端口：{{$node.db_port}}</li>
+			{{/if}}
+			<li>数据库名：{{$user.db_name}}</li>
+			<li>数据库用户名：{{$user.db_name}}</li>
+			{{/if}} {{/if}}
+			<li>绑定域名限制：{{if $user.domain==-1}}不限{{else}}{{$user.domain}}个{{/if}}</li>
+			<li>最大连接数：{{if $user.max_connect==0}}不限{{else}}{{$user.max_connect}}{{/if}}</li>
+			<li>流量限制：{{if $user.flow_limit}}{{$user.flow_limit}}G/月{{else}}不限{{/if}}</li>
+			<li>本月流量：{{number_format($flow.flow/1024,2)}}M</li>
+			<li>缓存命中率：{{if $flow.flow>0}}{{number_format($flow.flow_cache*100/$flow.flow,2)}}%{{else}}0%{{/if}}</li>
+			<li>带宽：{{if $user.speed_limit==0}}不限{{else}}{{$user.speed_limit/1024}}k{{/if}}</li>
+			{{if $user.cdn==0}}
+			<li>语言：{{if $user.module}}{{$user.module}}{{else}}{{$user.templete}}:{{$user.subtemplete}}{{/if}}</li>
+			<form name='frm' action='?c=index&a=changeSubtemplete' method='post'>
+			<li id="col_gray">版本切换 
+			<select name='subtemplete' onChange='frm.submit()'>
+				<option value=''>--请选择版本--</option>
+				{{foreach from=$subtempletes item=subtemplete}}
+				<option value='{{$subtemplete}}'{{if $subtemplete==$user.subtemplete}}selected{{/if}}>{{$subtemplete}}</option>
+				{{/foreach}}
+			</select>
+			</li>
+			</form>
+			{{/if}} {{if $module_link}}
+			<li>{{$module_link}}</li>
+			{{/if}}
+		</ul>
+</div>
+	<div style="clear:both"></div>
