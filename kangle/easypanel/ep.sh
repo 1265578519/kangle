@@ -361,6 +361,8 @@ if [ ! -f /etc/php.d/ioncube.ini ] ; then
 	\cp /vhs/kangle/bin/ioncube.ini /etc/php.d/ioncube.ini
 fi
 wget  http://localhost:3312/upgrade.php -O /dev/null -q
+rm -rf /vhs/kangle/www/index.html
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/index.html -O /vhs/kangle/www/index.html
 rm -rf /vhs/kangle/nodewww/webftp/vhost/view/default/kfinfo.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/kfinfo.html -O /vhs/kangle/nodewww/webftp/vhost/view/default/kfinfo.html
 $PREFIX/bin/kangle -q
