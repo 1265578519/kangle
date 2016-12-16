@@ -24,3 +24,11 @@ mkdir -p $PREFIX
 yum -y install wget;wget http://github.itzmx.com/1265578519/kangle/master/ent/license/Ultimate/license.txt -O $PREFIX/license.txt
 ./install.sh $PREFIX
 $PREFIX/bin/kangle
+echo "/vhs/kangle/bin/kangle" >> /etc/rc.d/rc.local
+/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+/sbin/iptables -I INPUT -p tcp --dport 443 -j ACCEPT
+/sbin/iptables -I INPUT -p tcp --dport 3311 -j ACCEPT
+/sbin/iptables -I INPUT -p tcp --dport 3312 -j ACCEPT
+/sbin/iptables -I INPUT -p tcp --dport 3313 -j ACCEPT
+/sbin/iptables -I INPUT -p tcp --dport 21 -j ACCEPT
+/etc/rc.d/init.d/iptables save
