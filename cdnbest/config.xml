@@ -1,0 +1,195 @@
+<config programVersion='1.0' configVersion='0'>
+	<listen ip='*' port='80' type='http'/>
+	<listen ip='*' port='3311' type='manage' />
+	<keep_alive>60</keep_alive>
+	<timeout>60</timeout>
+	<run user=''/>
+	<admin user='admin' password='kangle' admin_ips='127.0.0.1|*'/>
+	<gzip default='0' only_gzip_cache='0' min_gzip_length='256' gzip_level='5'/>
+	<cache default='1' max_cache_size='1M' memory='10M' refresh_time='10'/>
+	<connect max_per_ip='0' max='0' />
+	<attack enable='0' max_request='30' total_seconds='20' path_info='1'/>
+	<charset>gbk</charset>
+	<insert_via>0</insert_via>
+	<x_forwarded_for>0</x_forwarded_for>
+	<log level='3' rotate_size='100M' error_rotate_size='100M' logs_size='2G'/>
+	<!--
+	<server name='apache' type='http' host='localhost' port='82'/>
+	<server name='php' type='fastcgi' host='localhost' port='10080'/>
+	<cgi name='php' cmd='/usr/bin/php-cgi' env='REDIRECT_STATUS=CGI'/>
+	<api name='php' file='bin/libphp5.so'/>
+	-->
+	<api name='whm' file='buildin:whm'/>
+	<request action='vhs' >
+	</request>
+	<response action='allow' >
+	</response>
+	<vhs index='index.html,index.htm' error_404='/404.html' error_403='/403.html'>
+	<!--
+	  <map file_ext='php' extend='api:php'/>
+	  <map file_ext='php' extend='server:apache'/>
+	  <map path='/cgi-bin/' extend='cgi'/>
+     	-->
+	<!-- define mime type -->
+	<mime_type ext='*' type='text/plain'/>
+	<mime_type ext='3gp' type='video/3gpp'/>
+	<mime_type ext='3gpp' type='video/3gpp'/>
+	<mime_type ext='ai' type='application/postscript'/>
+	<mime_type ext='aif' type='audio/x-aiff'/>
+	<mime_type ext='aifc' type='audio/x-aiff'/>
+	<mime_type ext='aiff' type='audio/x-aiff'/>
+	<mime_type ext='amr' type='audio/amr'/>
+	<mime_type ext='arj' type='application/x-arj-compressed'/>
+	<mime_type ext='atom' type='application/atom+xml'/>
+	<mime_type ext='au' type='audio/basic'/>
+	<mime_type ext='avi' type='video/x-msvideo'/>
+	<mime_type ext='bcpio' type='application/x-bcpio'/>
+	<mime_type ext='bin' type='application/macbinary'/>
+	<mime_type ext='bmp' type='image/x-bmp'/>
+	<mime_type ext='c' type='text/plain'/>
+	<mime_type ext='cab' type='application/octet-stream'/>
+	<mime_type ext='cc' type='text/plain'/>
+	<mime_type ext='cdf' type='application/x-netcdf'/>
+	<mime_type ext='cod' type='text/x-co-desc'/>
+	<mime_type ext='core' type='application/octet-stream'/>
+	<mime_type ext='cpio' type='application/x-cpio'/>
+	<mime_type ext='cpp' type='text/plain'/>
+	<mime_type ext='csh' type='application/x-csh'/>
+	<mime_type ext='css' type='text/css'/>
+	<mime_type ext='dll' type='application/octet-stream'/>
+	<mime_type ext='doc' type='application/msword'/>
+	<mime_type ext='dvi' type='application/x-dvi'/>
+	<mime_type ext='ear' type='application/java-archive'/>
+	<mime_type ext='eps' type='application/postscript'/>
+	<mime_type ext='etx' type='text/x-setext'/>
+	<mime_type ext='exe' type='application/octet-stream'/>
+	<mime_type ext='f90' type='text/plain'/>
+	<mime_type ext='flv' type='video/x-flv'/>
+	<mime_type ext='gif' type='image/gif'/>
+	<mime_type ext='gtar' type='application/x-gtar'/>
+	<mime_type ext='gz' type='application/x-tar'/>
+	<mime_type ext='h' type='text/plain'/>
+	<mime_type ext='hdf' type='application/x-hdf'/>
+	<mime_type ext='hh' type='text/plain'/>
+	<mime_type ext='hqx' type='application/mac-binhex40'/>
+	<mime_type ext='htm' type='text/html' gzip='1'/>
+	<mime_type ext='html' type='text/html' gzip='1'/>
+	<mime_type ext='ico' type='image/x-icon'/>
+	<mime_type ext='ief' type='image/ief'/>
+	<mime_type ext='jad' type='text/vnd.sun.j2me.app-descriptor'/>
+	<mime_type ext='jar' type='application/java-archive'/>
+	<mime_type ext='jng' type='image/x-jng'/>
+	<mime_type ext='jpe' type='image/jpeg'/>
+	<mime_type ext='jpeg' type='image/jpeg'/>
+	<mime_type ext='jpg' type='image/jpeg'/>
+	<mime_type ext='js' type='application/x-javascript'/>
+	<mime_type ext='latex' type='application/x-latex'/>
+	<mime_type ext='lha' type='application/x-lha-compressed'/>
+	<mime_type ext='lsm' type='text/plain'/>
+	<mime_type ext='lzh' type='application/x-lha-compressed'/>
+	<mime_type ext='m' type='text/plain'/>
+	<mime_type ext='man' type='application/x-troff-man'/>
+	<mime_type ext='mbm' type='image/x-epoc-mbm'/>
+	<mime_type ext='me' type='application/x-troff-me'/>
+	<mime_type ext='mid' type='audio/midi'/>
+	<mime_type ext='midi' type='audio/midi'/>
+	<mime_type ext='mif' type='application/x-mif'/>
+	<mime_type ext='mmf' type='application/x-smaf'/>
+	<mime_type ext='mml' type='text/mathml'/>
+	<mime_type ext='mov' type='video/quicktime'/>
+	<mime_type ext='movie' type='video/x-sgi-movie'/>
+	<mime_type ext='mp2' type='audio/basic'/>
+	<mime_type ext='mp3' type='audio/mpeg'/>
+	<mime_type ext='mp4' type='video/mp4'/>
+	<mime_type ext='mpe' type='video/mpeg'/>
+	<mime_type ext='mpeg' type='video/mpeg'/>
+	<mime_type ext='mpg' type='video/mpeg'/>
+	<mime_type ext='ms' type='application/x-troff-ms'/>
+	<mime_type ext='msw' type='application/msword'/>
+	<mime_type ext='mwrt' type='application/macwriteii'/>
+	<mime_type ext='n3a' type='image/vnd.nok-3dscreensaver'/>
+	<mime_type ext='nc' type='application/x-netcdf'/>
+	<mime_type ext='ngd' type='application/x-nokiagamedata'/>
+	<mime_type ext='nok' type='image/vnd.nok-oplogo-colornokia-op-logo'/>
+	<mime_type ext='nqd' type='application/vnd.nokia.gamedata'/>
+	<mime_type ext='oda' type='application/oda'/>
+	<mime_type ext='pbm' type='image/x-portable-bitmap'/>
+	<mime_type ext='pdf' type='application/pdf'/>
+	<mime_type ext='pgm' type='image/x-portable-graymap'/>
+	<mime_type ext='pic' type='application/pict'/>
+	<mime_type ext='pict' type='application/pict'/>
+	<mime_type ext='pmd' type='application/x-pmd'/>
+	<mime_type ext='png' type='image/png'/>
+	<mime_type ext='pnm' type='image/x-portable-anymap'/>
+	<mime_type ext='ppm' type='image/x-portable-pixmap'/>
+	<mime_type ext='ps' type='application/postscript'/>
+	<mime_type ext='qcp' type='audio/vnd.qcelp'/>
+	<mime_type ext='qt' type='video/quicktime'/>
+	<mime_type ext='rar' type='application/x-rar-compressed'/>
+	<mime_type ext='ras' type='image/cmu-raster'/>
+	<mime_type ext='rgb' type='image/x-rgb'/>
+	<mime_type ext='rng' type='application/vnd.nokie.ringing-tone'/>
+	<mime_type ext='roff' type='application/x-troff'/>
+	<mime_type ext='rpm' type='application/x-rpm'/>
+	<mime_type ext='rss' type='application/rss+xml'/>
+	<mime_type ext='rtf' type='application/x-rtf'/>
+	<mime_type ext='rtx' type='text/richtext'/>
+	<mime_type ext='sh' type='application/x-sh'/>
+	<mime_type ext='shar' type='application/x-shar'/>
+	<mime_type ext='si' type='text/vnd.wap.si'/>
+	<mime_type ext='sic' type='application/vnd.wap.sic'/>
+	<mime_type ext='sis' type='application/vnd.symbian.install'/>
+	<mime_type ext='sit' type='application/stuffit'/>
+	<mime_type ext='sl' type='text/vnd.wap.sl'/>
+	<mime_type ext='slc' type='application/vnd.wap.slc'/>
+	<mime_type ext='snd' type='audio/basic'/>
+	<mime_type ext='src' type='application/x-wais-source'/>
+	<mime_type ext='sv4cpio' type='application/x-sv4cpio'/>
+	<mime_type ext='sv4crc' type='application/x-sv4crc'/>
+	<mime_type ext='svg' type='image/svg+xml'/>
+	<mime_type ext='svgz' type='image/svg+xml'/>
+	<mime_type ext='swf' type='application/x-shockwave-flash'/>
+	<mime_type ext='t' type='application/x-troff'/>
+	<mime_type ext='tar' type='application/x-tar'/>
+	<mime_type ext='tcl' type='application/x-tcl'/>
+	<mime_type ext='tex' type='application/x-tex'/>
+	<mime_type ext='texi' type='application/x-texinfo'/>
+	<mime_type ext='texinfo' type='application/x-texinfo'/>
+	<mime_type ext='tgz' type='application/x-tar'/>
+	<mime_type ext='tif' type='image/tiff'/>
+	<mime_type ext='tiff' type='image/tiff'/>
+	<mime_type ext='tr' type='application/x-troff'/>
+	<mime_type ext='tsv' type='text/tab-separated-values'/>
+	<mime_type ext='ustar' type='application/x-ustar'/>
+	<mime_type ext='vcf' type='text/v-vcard'/>
+	<mime_type ext='vcs' type='text/x-vcalendar'/>
+	<mime_type ext='war' type='application/java-archive'/>
+	<mime_type ext='wav' type='audio/x-wav'/>
+	<mime_type ext='wbmp' type='image/vnd.wap.wmbp'/>
+	<mime_type ext='webm' type='video/webm'/>
+	<mime_type ext='webp' type='image/webp'/>
+	<mime_type ext='wml' type='text/vnd.wap.wml'/>
+	<mime_type ext='wmlc' type='application/vnd.wap.wmlc'/>
+	<mime_type ext='wmls' type='text/vnd.wap.wmlscript'/>
+	<mime_type ext='wmlsc' type='text/vnd.wap.wmlscript'/>
+	<mime_type ext='wmv' type='video/x-ms-wmv'/>
+	<mime_type ext='xbm' type='image/x-xbitmap'/>
+	<mime_type ext='xls' type='application/msexcel'/>
+	<mime_type ext='xml' type='text/xml'/>
+	<mime_type ext='xpm' type='image/x-xpixmap'/>
+	<mime_type ext='xwd' type='image/x-xwindowdump'/>
+	<mime_type ext='Z' type='application/x-tar'/>
+	<mime_type ext='zip' type='application/x-zip-compressed'/>
+	<mime_type ext='zlib' type='application/x-deflate'/>
+	</vhs>
+	<vh name='default' doc_root='www'>
+		<host>*</host>
+		<!--
+		  <map file_ext='php' extend='api:php'/>
+		  <map file_ext='php' extend='server:apache'/>
+		  <map path='/cgi-bin/' extend='cgi'/>
+		-->
+	</vh>
+
+</config>
+<!--configfileisok-->
