@@ -35,9 +35,11 @@
                 <acl_meth >HEAD</acl_meth>
             </chain>
 			<chain  action='deny' >
+			<acl_listen_ports revers='1'  split='|'>3312</acl_listen_ports>
 				<mark_param   value='&#39;.*[; ]?((or)|(insert)|(select)|(union)|(update)|(delete)|(replace)|(create)|(drop)|(alter)|(grant)|(load)|(show)|(exec))[\s(]' get='1'  post='1'  icase='1'  charset=''></mark_param>
 			</chain>
 			<chain  action='deny' >
+			<acl_listen_ports revers='1'  split='|'>3312</acl_listen_ports>
 				<mark_post_file   filename='\.((php)|(asp))$' icase='1'></mark_post_file>
 			</chain>
 			<chain  action='continue' >
