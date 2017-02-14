@@ -22,8 +22,8 @@
 	<bl_time>600</bl_time>
 	<unix_socket>1</unix_socket>
 	<path_info>1</path_info>
-	<server_software>sakura</server_software>
-	<hostname>kangle web server</hostname>
+	<server_software>kangle/sakura</server_software>
+	<hostname>kangle web server for sakura cache</hostname>
 	<remove_accept_encoding>1</remove_accept_encoding>
 	<insert_via>0</insert_via>
 	<x_forwarded_for>0</x_forwarded_for>
@@ -231,6 +231,7 @@
 <mime_type ext='zlib' type='application/x-deflate' max_age='31536000'/>
 	</vhs>
 	<vh name='default' doc_root='www'>
+	<mime_type ext='html' type='text/html' gzip='1' max_age='60'/>
 		<host>*</host>
 	</vh>
 </config>
