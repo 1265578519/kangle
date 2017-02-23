@@ -23,7 +23,7 @@
 	<unix_socket>1</unix_socket>
 	<path_info>1</path_info>
 	<server_software>kangle/sakura</server_software>
-	<hostname>kangle web server for sakura cache</hostname>
+	<hostname>kangle web server for sakura ca</hostname>
 	<remove_accept_encoding>1</remove_accept_encoding>
 	<insert_via>0</insert_via>
 	<x_forwarded_for>0</x_forwarded_for>
