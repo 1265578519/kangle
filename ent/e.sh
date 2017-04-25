@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="3.5.9.5"
+VERSION="3.5.9.6"
 if test $# != 1;then
         echo "Usage: $0 dir"
         exit 1;
