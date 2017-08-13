@@ -49,5 +49,20 @@ cd apcu-5.1.3
 ./configure --with-php-config=/vhs/kangle/ext/tpl_php718/bin/php-config
 make -j 4
 make install
+#install libmemcached
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.1/718/libmemcached-1.0.18.tar.gz
+tar -zxvf libmemcached-1.0.18.tar.gz
+cd libmemcached-1.0.18
+./configure
+make -j 4
+make install
+#install memcached
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.1/718/php-memcached-php7.zip
+unzip php-memcached-php7.zip
+cd php-memcached-php7
+/vhs/kangle/ext/tpl_php718/bin/phpize
+./configure --with-php-config=/vhs/kangle/ext/tpl_php718/bin/php-config --disable-memcached-sasl
+make -j 4
+make install
 rm -rf /tmp/*
 /vhs/kangle/bin/kangle -r
