@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="3.5.10.3"
+VERSION="3.5.11"
 if test $# != 1;then
         echo "Usage: $0 dir"
         exit 1;
@@ -32,8 +32,8 @@ echo "/vhs/kangle/bin/kangle" >> /etc/rc.d/rc.local
 /sbin/iptables -I INPUT -p tcp --dport 3313 -j ACCEPT
 /sbin/iptables -I INPUT -p tcp --dport 21 -j ACCEPT
 /etc/rc.d/init.d/iptables save
-rm -rf /vhs/kangle/www/index.html
-wget http://github.itzmx.com/1265578519/kangle/master/easypanel/index.html -O /vhs/kangle/www/index.html
+rm -rf $PREFIX/www/index.html
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/index.html -O $PREFIX/www/index.html
 $PREFIX/bin/kangle -q
 sleep 3
 killall -9 kangle
