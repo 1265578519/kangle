@@ -1,7 +1,7 @@
 #/bin/sh
 KANGLE_VERSION="3.5.11"
 PHP_VERSION="5.2.17"
-EASYPANEL_VERSION="2.6.20"
+EASYPANEL_VERSION="2.6.22"
 PUREFTP_VERSION="1.0.36"
 PREFIX="/vhs/kangle"
 CONFIG_FILES="/ext/tpl_php52/php-templete.ini"
