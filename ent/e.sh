@@ -20,7 +20,7 @@ $PREFIX/bin/kangle -q
 killall -9 kangle
 sleep 3
 mkdir -p $PREFIX
-yum -y install wget;wget http://github.itzmx.com/1265578519/kangle/master/ent/license/Ultimate/license.txt -O $PREFIX/license.txt
+wget http://github.itzmx.com/1265578519/kangle/master/ent/license/Ultimate/license.txt -O $PREFIX/license.txt
 ./install.sh $PREFIX
 $PREFIX/bin/kangle
 echo "/vhs/kangle/bin/kangle" >> /etc/rc.d/rc.local
