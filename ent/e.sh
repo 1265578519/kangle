@@ -17,7 +17,6 @@ wget $URL -O kangle.tar.gz
 tar xzf kangle.tar.gz
 cd kangle
 $PREFIX/bin/kangle -q
-sleep 3
 killall -9 kangle
 sleep 3
 mkdir -p $PREFIX
@@ -35,7 +34,6 @@ echo "/vhs/kangle/bin/kangle" >> /etc/rc.d/rc.local
 rm -rf $PREFIX/www/index.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/index.html -O $PREFIX/www/index.html
 $PREFIX/bin/kangle -q
-sleep 3
 killall -9 kangle
 sleep 3
 $PREFIX/bin/kangle
