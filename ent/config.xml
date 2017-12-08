@@ -12,8 +12,8 @@
 	<autoupdate type='off' install='0'/>
 	<admin user='admin' password='kangle' admin_ips='127.0.0.1|*'/>
 	<gzip default='0' only_gzip_cache='0' min_gzip_length='256' gzip_level='5'/>
-	<cache default='1' max_cache_size='2M' max_bigobj_size='2G' memory='50M' disk='5G' disk_dir='/var/cache/kangle' refresh_time='600'/>
-	<connect max_per_ip='0' max='0' />
+	<cache default='1' max_cache_size='1M' max_bigobj_size='2G' memory='50M' disk='5G' disk_dir='/var/cache/kangle' refresh_time='31536000'/>
+	<connect max_per_ip='65535' max='1000000' />
 	<max_post_size>10G</max_post_size>
 	<async_io>1</async_io>
 	<attack enable='0' max_request='30' total_seconds='20' path_info='1'/>
@@ -46,7 +46,7 @@
                 <mark_replace_ip   header='X-Real-Ip' > </mark_replace_ip>
             </chain>
 			<chain  action='continue' >
-				<mark_flag  always_online='1' double_cache_expire='1' x_cache='1' x_real_ip='1' age='1' ></mark_flag>
+				<mark_flag  always_online='1' x_cache='1' x_real_ip='1' age='1' ></mark_flag>
 			</chain>
 			<chain  action='continue' >
 				<acl_file_ext  icase='1' split='|'>xml</acl_file_ext>
@@ -70,7 +70,7 @@
 			<chain  action='continue' >
 				<acl_file_ext  icase='1' split='|'>3gp|7z|apk|avi|bdmv|bmp|bz2|css|csv|dat|db|deb|dll|dmg|doc|exe|f4v|flv|gif|gz|ico|img|inf|iso|jar|jpg|jpge|js|letv|log|m2ts|map|md5|mkv|mp3|mp4|msi|old|otf|pac|pdf|png|rar|rpm|sh|swf|tar|test|torrent|ttf|txt|txz|wim|xz|zip</acl_file_ext>
 				<acl_status_code op='lt' code='400'></acl_status_code>
-				<mark_cache_control   max_age='600' static='1'></mark_cache_control>
+				<mark_cache_control   max_age='31536000'></mark_cache_control>
 			</chain>
 			<chain  action='continue' >
 				<acl_status_code op='gt' code='400'></acl_status_code>
