@@ -1,0 +1,241 @@
+<script language='javascript' src='{{$PSTATIC}}/style/common.js'></script>
+<script language='javascript'>
+function list_subtemplete_result() { 
+	var recv_msg=false;
+	try{
+	 if (xmlhttp.readyState==4) {
+		if(xmlhttp.status==200){		
+		  var dataArray = xmlhttp.responseXML.getElementsByTagName('subtemplete');
+	      var dataArrayLen = dataArray.length;
+	      var templeteMatched = false;
+		  var i=0;
+		  var insertData = '';
+		  if(dataArrayLen>0){
+		   	insertData = "默认引擎:<select name='subtemplete'>";
+		  	for(i=0;i<dataArrayLen;i++){			 
+				if(dataArray[i].firstChild==null){
+					continue;
+				}
+			  var templete = dataArray[i].firstChild.data;
+			  insertData += "<option value='" + templete + "' ";
+			  if(templete == '{{$vhost.subtemplete}}'){
+				  insertData += 'selected';
+				  templeteMatched = true;
+			  }
+			  insertData += ">" + templete + "</option>\n";
+			 }
+			 insertData += "</select>";
+		  }
+		  xxkf_obj('subtemplete').innerHTML = insertData;
+		}
+	  }
+	}catch(e){
+		alert(e);
+	}
+}
+function changeTemplete(templete)
+{
+	//alert('templete='+templete);
+	xxkf_obj('subtemplete').innerHTML="<img src='{{$PSTATIC}}/style/busy.gif'/>";
+	var url = '?c=vhostproduct&a=ajaxListSubTemplete&node=localhost&templete=' + templete;
+	ajax_open_url(url,list_subtemplete_result);
+}
+var template_html = '';
+var subtemplate_html = '';
+function list_templete_result() { 
+	var recv_msg=false;
+	try{
+	 if (xmlhttp.readyState==4) {
+		if(xmlhttp.status==200){		
+			var dataArray = xmlhttp.responseXML.getElementsByTagName('templete');
+	      var dataArrayLen = dataArray.length;
+	      var templeteMatched = false;
+		  var i=0;
+		  var insertData = "<select name='templete' onChange='changeTemplete(this.value)'>";
+		  for(i=0;i<dataArrayLen;i++){			 
+			  var templete = dataArray[i].firstChild.data;
+			  insertData += "<option value='" + templete + "' ";
+			  if(templete == '{{$vhost.templete}}'){
+				  insertData += 'selected';
+				  templeteMatched = true;
+			  }
+			  insertData += ">" + templete + "</option>\n";
+		  }
+		  insertData += "</select>";
+		  xxkf_obj('templete').innerHTML = insertData;
+		  template_html = insertData;
+		  {{if $vhost.templete!=''}}
+		  if(!templeteMatched){
+			 alert('Warning: The node have not templete : {{$vhost.templete}}'); 
+		  }
+		  {{/if}}
+		  if(nodeform.templete.selectedIndex>=0){
+		  	changeTemplete(nodeform.templete.options[nodeform.templete.selectedIndex].value);
+		  }
+		}
+	  }
+	}catch(e){
+		alert(e);
+	}
+}
+function changeNode()
+{
+	xxkf_obj('templete').innerHTML="<img src='{{$PSTATIC}}/style/busy.gif'/>";
+	var url = '?c=vhostproduct&a=ajaxListTemplete&node=localhost';
+	ajax_open_url(url,list_templete_result);
+}
+function change_cdn(val)
+{
+	
+	if(val==0){
+		//var html = jQuery("#model-template").html();
+		jQuery(".cdnpanel").show();
+		document.getElementById("max_worker").value = 8;
+		//$('cdnpanel').style.display='block';
+		document.getElementById('subdir_flag').checked = true;
+		document.getElementById('ftp_connect').style.display = "";
+		document.getElementById('ftp_usl').style.display = "";
+		document.getElementById('ftp_dsl').style.display = "";
+		document.getElementById('envs').style.display = "";
+	} else {
+		jQuery(".cdnpanel").hide();
+		document.getElementById("max_worker").value = 0;
+		//$('cdnpanel').style.display='none';
+		document.getElementById('ftp_connect').style.display = "none";
+		document.getElementById('ftp_usl').style.display = "none";
+		document.getElementById('ftp_dsl').style.display = "none";
+		document.getElementById('envs').style.display = "none";
+	}
+}
+function change_module(val)
+{
+
+	if(val==""){
+		$('old_module').style.display='';
+	} else {
+		$('old_module').style.display='none';
+	}
+}
+function display_obj()
+{
+	var d = document.getElementById('gj').style.display;
+	if (d != 'none') {
+		document.getElementById('gj').style.display='none';
+	}else{
+		document.getElementById('gj').style.display='';
+		if (document.getElementById('cdncheck') != null) {
+			var cdn = document.getElementById('cdncheck').checked;
+			if (cdn==true) {
+				document.getElementById('ftp_connect').style.display = "none";
+				document.getElementById('ftp_usl').style.display = "none";
+				document.getElementById('ftp_dsl').style.display = "none";
+				document.getElementById('envs').style.display = "none";
+			}
+		}
+	}
+}
+function check_db(status)
+{
+	document.getElementById('db_type').style.display="";
+	if (status==0){
+		document.getElementById('db_quota').value="";
+	}
+	if (status==1){
+		if (document.getElementById('db_quota').value < 1){
+			document.getElementById('db_type').style.display="none";
+		}
+	} 
+}
+</script>
+	<tbody id="product-type" class="free_tbody" {{if $product_id}} style="display:none"{{/if}}>
+	<tr><td  >产品类型:</td>
+		<td>
+		<input name='cdn' type='radio' value='0' {{if !$vhost || $vhost.cdn==0}} checked {{/if}} onClick="change_cdn(0);"/>虚拟主机
+		<input name='cdn' type='radio' id='cdncheck' value='1' {{if $vhost.cdn==1}} checked {{/if}} onClick="change_cdn(1);"/>cdn
+		</td></tr>
+	</tbody>
+	
+	<tbody class="free_tbody" {{if $product_id}} style="display:none"{{/if}}>
+		<tr class="cdnpanel" >
+			<td >模块</td>
+			<td>
+			<input name='module' type='radio' onClick="change_module('');" value='' checked="checked" {{if $vhost.name && $vhost.module==""}}checked{{/if}}/>无(旧格式)
+			{{foreach from=$modules item=module}}
+			{{/foreach}}
+			</td>
+			</tr>
+			<tr id='old_module' class="cdnpanel">
+			<td>语言:</td>
+			<td ><span id='templete'></span><span id='subtemplete'></span></td>
+			</tr>
+			<tr class="cdnpanel"><td  >空间大小(M):</td>
+					<td ><input name="web_quota" 	id='web_quota' value="{{if $vhost}}{{$vhost.web_quota}}{{else}}1000{{/if}}"	size="15"> <font color='red'>*必填</font></td></tr>
+				
+			<tr class="cdnpanel"><td >数据库大小(M):(为0表示不开通数据库)</td>
+					<td ><input name="db_quota"  id='db_quota'  value="{{if $vhost}}{{$vhost.db_quota}}{{else}}0{{/if}}" size="15">&nbsp;<font color='red'>*数据库开通后不能修改为0或留空，否则会清除数据库数据</font></td></tr>
+				
+			<tr class="cdnpanel" id='db_type' ><td >数据库类型:</td>
+					<td ><input type='radio' name='db_type' value='mysql' {{if !$vhost || $vhost.db_type!='sqlsrv'}}checked{{/if}}>mysql
+									   <input type='radio' name='db_type' value='sqlsrv' {{if $vhost && $vhost.db_type=='sqlsrv'}}checked{{/if}}>sql server</td></tr>
+				
+			<tr class="cdnpanel"><td >默认绑定子目录:</td>
+					<td ><input name="subdir"  id='subdir' value="{{if $vhost}}{{$vhost.subdir}}{{else}}wwwroot{{/if}}"	size="16"></td></tr>
+			<tr class="cdnpanel"><td >独立队列:</td>
+				<td >工作数(0不限):<input name="max_worker"  id='max_worker' size='5' value="{{if $vhost}}{{$vhost.max_worker}}{{else}}8{{/if}}">
+									   队列数(0不限):<input name="max_queue"  id='max_queue' size='5' value="{{if $vhost}}{{$vhost.max_queue}}{{else}}0{{/if}}"></td></tr>
+	
+	<tr><td >流量限制:</td>
+		<td ><input name='flow_limit' value='{{if $vhost.flow_limit}}{{$vhost.flow_limit}}{{/if}}'>&nbsp;G/每月&nbsp;需商业版支持</td></tr>
+	
+	<tr><td >绑定子目录:</td>
+		<td ><input type='checkbox' name='subdir_flag' id='subdir_flag' value='1'{{if !$vhost || $vhost.subdir_flag}}checked{{/if}}>
+										允许绑定子目录,限制个数(0表示不限):<input name='max_subdir' id='max_subdir' value='{{$vhost.max_subdir}}' size=4></td></tr>
+	<tr><td >其它高级选项:</td>
+		<td >[<a href="javascript:display_obj();" >显示/隐藏</a>]</td></tr>
+	</tbody>
+	<tbody id='gj' style='display:none' class="free_tbody">
+		<tr id='envs'><td >独立ip:</td>
+			<td ><input name="ip"  id='ip' value="{{$vhost.ip}}"></td></tr>
+		<tr id='envs'><td >端口:</td>
+			<td ><input name="port"  id='port' value="{{$vhost.port}}">(多个端口由,分开,ssl端口请加s，如80,443s)</td></tr>
+		<tr id='envs'><td >计划任务:</td>
+			<td ><input size=5 name="cron"   value="{{$vhost.cron}}">条</td></tr>
+		<tr id='envs'><td >管理变量:</td>
+			<td ><input name="envs"  id='envs' value="{{$vhost.envs}}"></td></tr>
+		
+		<tr><td >域名绑定个数(-1表示无限):</td>
+			<td ><input name="domain"  id='domain' value="{{if $vhost}}{{$vhost.domain}}{{else}}-1{{/if}}" size="12"></td></tr>
+		
+		<tr><td >最大连接数(0无限):</td>
+			<td ><input name="max_connect"  size='8' value="{{if $vhost}}{{$vhost.max_connect}}{{else}}0{{/if}}"></td></tr>
+		
+		<tr><td >带宽限制(0无限):</td>
+			<td ><input name="speed_limit"  size='8' value="{{if $vhost}}{{$vhost.speed_limit/1024}}{{else}}0{{/if}}">&nbsp;K/每秒</td></tr>
+		
+		<tr id='ftp_connect'><td >ftp连接数(0无限):</td>
+			<td ><input name="ftp_connect"  size='8' value="{{if $vhost.ftp_connect}}{{$vhost.ftp_connect}}{{else}}0{{/if}}">&nbsp;个</td></tr>
+		
+		<tr id='ftp_usl'><td >ftp上传速度(0无限):</td>
+			<td ><input name="ftp_usl"  size='8' value="{{if $vhost}}{{$vhost.ftp_usl}}{{else}}0{{/if}}">&nbsp;K/每秒</td></tr>
+		
+		<tr id='ftp_dsl'><td >ftp下载速度(0无限):</td>
+			<td ><input name="ftp_dsl"  size='8' value="{{if $vhost}}{{$vhost.ftp_dsl}}{{else}}0{{/if}}">&nbsp;K/每秒</td></tr>
+		
+		
+		<tr><td >其它选项:</td>
+			<td >
+				<input type='checkbox' name='htaccess' id='htaccess' value='.htaccess' {{if $vhost.htaccess || !$vhost}}checked{{/if}}>.htaccess支持
+				<input type='checkbox' name='ftp' id='ftp' value='1' {{if $vhost.ftp || !$vhost}}checked{{/if}}>开启ftp
+				<input type='checkbox' name='log_file' id='log_file' value='logs/access.log' {{if $vhost.log_file || !$vhost}}checked{{/if}}>日志独立
+				<input type='checkbox' name='log_handle' id='log_handle' value='1' {{if $vhost.log_handle || $setting.webalizer}}checked{{/if}}>日志分析
+				<input type='checkbox' name='access' id='access' value='access.xml' {{if $vhost.access || !$vhost}}checked{{/if}}>自定义控制
+				<input type='checkbox' name='ssi' id='ssi' value='1' {{if $vhost.ssi || !$vhost}}checked{{/if}}>ssi支持
+				<input type='checkbox' name='ignore_backup'  value='1' {{if $vhost.ignore_backup}}checked{{/if}}>忽略备份
+			</td></tr>
+	</tbody>
+<script language='javascript'>
+changeNode();
+</script>
+<script type='text/template' id="model-template">
+		
+</script>
