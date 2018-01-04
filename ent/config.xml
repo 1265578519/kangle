@@ -29,7 +29,7 @@
 	<x_forwarded_for>0</x_forwarded_for>
 	<access_log_handle><![CDATA[/usr/bin/gzip ${log_file}]]></access_log_handle>
 	<log_handle_concurrent>2</log_handle_concurrent>
-	<log level='3' rotate_time='*/5 * * * *' rotate_size='50M' error_rotate_size='2M' logs_day='7' logs_size='2G' log_handle='1'/>
+	<log level='3' rotate_time='0 0 * * *' rotate_size='50M' error_rotate_size='2M' logs_day='7' logs_size='2G' log_handle='1'/>
 	<api name='whm' file='buildin:whm'/>
 	<request action='vhs' >
 	<table name='BEGIN'>
