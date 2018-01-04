@@ -1,0 +1,4 @@
+<!--#start 901 -->
+<config>
+<access_log_handle>/usr/bin/gzip ${log_file}</access_log_handle>
+</config>

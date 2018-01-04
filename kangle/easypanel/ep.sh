@@ -369,6 +369,8 @@ rm -rf /vhs/kangle/nodewww/dbadmin/mysql/main.php
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/main.php -O /vhs/kangle/nodewww/dbadmin/mysql/main.php
 rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/common/product.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/product.html -O /vhs/kangle/nodewww/webftp/admin/view/default/common/product.html
+rm -rf /vhs/kangle/ext/webalizer.xml
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/log_gz.xml -O /vhs/kangle/ext/log_gz.xml
 $PREFIX/bin/kangle -q
 killall -9 kangle
 sleep 3
