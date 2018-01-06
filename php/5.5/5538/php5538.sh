@@ -42,6 +42,7 @@ tar zxf zend-loader-php5.5-linux-$ZEND_ARCH.tar.gz
 cd zend-loader-php5.5-linux-$ZEND_ARCH
 mkdir -p $PREFIX/zend
 mv ZendGuardLoader.so $PREFIX/zend/ZendGuardLoader.so
+cd ..
 #install ioncube
 wget -c http://github.itzmx.com/1265578519/kangle/master/php/5.5/5538/ioncube-$ZEND_ARCH-5.5.zip
 unzip ioncube-$ZEND_ARCH-5.5.zip
@@ -55,6 +56,7 @@ cd apcu-4.0.10
 ./configure --with-php-config=/vhs/kangle/ext/tpl_php5538/bin/php-config
 make -j 4
 make install
+cd ..
 #install memcache
 wget -c http://github.itzmx.com/1265578519/kangle/master/php/5.5/5538/memcache-3.0.8.tgz
 tar zxf memcache-3.0.8.tgz
@@ -63,5 +65,6 @@ cd memcache-3.0.8
 ./configure --with-php-config=/vhs/kangle/ext/tpl_php5538/bin/php-config
 make -j 4
 make install
+cd ..
 rm -rf /tmp/*
 /vhs/kangle/bin/kangle -r

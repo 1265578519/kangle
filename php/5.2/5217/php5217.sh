@@ -56,6 +56,7 @@ cd apcu-4.0.10
 ./configure --with-php-config=/vhs/kangle/ext/tpl_php5217/bin/php-config
 make -j 4
 make install
+cd ..
 #install memcache
 wget -c http://github.itzmx.com/1265578519/kangle/master/php/5.2/5217/memcache-3.0.8.tgz
 tar zxf memcache-3.0.8.tgz
@@ -64,5 +65,6 @@ cd memcache-3.0.8
 ./configure --with-php-config=/vhs/kangle/ext/tpl_php5217/bin/php-config
 make -j 4
 make install
+cd ..
 rm -rf /tmp/*
 /vhs/kangle/bin/kangle -r
