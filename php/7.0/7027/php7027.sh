@@ -59,9 +59,9 @@ make -j 4
 make install
 cd ..
 #install memcached
-wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.0/7027/php-memcached-3.0.4.tar.gz
-tar -zxvf php-memcached-3.0.4.tar.gz
-cd php-memcached-3.0.4
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.0/7027/php-memcached-3.1.0-dev.zip
+unzip -o php-memcached-3.1.0-dev.zip
+cd php-memcached-3.1.0-dev
 /vhs/kangle/ext/tpl_php7027/bin/phpize
 ./configure --with-php-config=/vhs/kangle/ext/tpl_php7027/bin/php-config --disable-memcached-sasl
 make -j 4
