@@ -56,6 +56,45 @@ kangle web server 8核心8G内存VPS实测跑60W并发连接数妥妥的
 
 kangle web server 更新日志
 -------
+2017-12-26 kangle 3.5.12
+缓存交换重构为异步io
+linux使用系统原生异步io，并发宽带吞吐性能更高
+修复缓存br压缩网页，会导致乱码.
+linux支持SO_REUSEPORT
+linux支持jemalloc内存管理
+windows使用GetQueuedCompletionStatusEx
+
+2017-07-28 kangle 3.5.11
+修复限速的bug
+修复windows版本ssl的bug
+增加queue标记模块，可在访问控制中针对不同的url，进行工作者限制。
+修改referer匹配模块，支持检测空来源(-表示).
+2017-07-27 kangle 3.5.10
+修复 ajp协议无法post提交数据的bug
+kangle使用数据库存储虚拟主机配置时，sqlite驱动使用只读模式，去掉所有写入配置到数据库功能，提高稳定性。
+
+2017-04-10 kangle 3.5.9
+修复 windows版本一处死锁的bug
+修复http2请求控制中重定向的bug
+改进srcs匹配模块
+修复gzip压缩缓存会被无gzip请求冲掉的bug
+
+2016-06-27 kangle 3.5.8
+修复 url_hash的bug
+swap in/out 增加超时机制
+修复http2的一些小问题
+
+2016-04-13 kangle 3.5.7
+支持arm架构
+修复windows安装有些用户报缺少msvcr120.dll文件
+修复多服务器扩展中节点为空的错误
+如果kangle目录存在manage.sec文件时，禁用web管理(127.0.0.1例外)，可用于临时关闭web管理,增加安全。
+
+2016-03-14 3.5.6 
+增加HTTP/2协议的支持
+支持反向代理使用ssl和上游通信(端口后面加s，如443s)
+windows版openssl升级到1.0.2g
+修复websocket代理的一处bug
 
 2015-12-31 3.5.5 更新：
 修复一个处理上游chunked的bug
