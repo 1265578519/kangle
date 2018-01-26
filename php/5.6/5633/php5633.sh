@@ -25,7 +25,7 @@ if test $? != 0; then
 	echo "configure php error";
 	exit 1
 fi
-make -j 4
+make -j 1
 make install
 mkdir -p $PREFIX/etc/php.d
 if [ ! -f $PREFIX/php-templete.ini ]; then
@@ -54,7 +54,7 @@ tar zxf apcu-4.0.10.tgz
 cd apcu-4.0.10
 /vhs/kangle/ext/tpl_php5633/bin/phpize
 ./configure --with-php-config=/vhs/kangle/ext/tpl_php5633/bin/php-config
-make -j 4
+make -j 1
 make install
 cd ..
 #install memcache
@@ -63,7 +63,7 @@ tar zxf memcache-3.0.8.tgz
 cd memcache-3.0.8
 /vhs/kangle/ext/tpl_php5633/bin/phpize
 ./configure --with-php-config=/vhs/kangle/ext/tpl_php5633/bin/php-config
-make -j 4
+make -j 1
 make install
 cd ..
 rm -rf /tmp/*
