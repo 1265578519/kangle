@@ -14,6 +14,7 @@
 	<gzip default='0' only_gzip_cache='0' min_gzip_length='256' gzip_level='5'/>
 	<cache default='1' max_cache_size='1M' max_bigobj_size='2G' memory='50M' disk='5G' disk_dir='/var/cache/kangle' refresh_time='31536000'/>
 	<connect max_per_ip='65535' max='1000000' />
+	</connect>
 	<max_post_size>10G</max_post_size>
 	<async_io>1</async_io>
 	<attack enable='0' max_request='30' total_seconds='20' path_info='1'/>
