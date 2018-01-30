@@ -1,13 +1,13 @@
 <config programVersion='1.0' configVersion='0'>
 	<listen ip='*' port='80' type='http'/>
-	<listen ip='*' port='3311' type='manage' />
+	<listen ip='*' port='3311' type='manage'/>
 	<keep_alive>60</keep_alive>
 	<timeout>60</timeout>
 	<run user=''/>
 	<admin user='admin' password='kangle' admin_ips='127.0.0.1|*'/>
 	<gzip default='0' only_gzip_cache='0' min_gzip_length='256' gzip_level='5'/>
 	<cache default='1' max_cache_size='1M' memory='10M' refresh_time='10'/>
-	<connect max_per_ip='0' max='0' />
+	<connect max_per_ip='0' max='0'/>
 	<attack enable='0' max_request='30' total_seconds='20' path_info='1'/>
 	<charset>gbk</charset>
 	<insert_via>0</insert_via>
