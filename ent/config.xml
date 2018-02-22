@@ -38,8 +38,8 @@
                 <mark_check_black_list></mark_check_black_list>
             </chain>
                 <chain  action='deny' >
-                <acl_ip_rate request='6' second='60'></acl_ip_rate>
                 <acl_url  nc='1'><![CDATA[:3312/api/]]></acl_url>
+                <acl_ip_rate request='6' second='60'></acl_ip_rate>
                 <mark_black_list></mark_black_list>
             </chain>
 			<chain  action='deny' >
