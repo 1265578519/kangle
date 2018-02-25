@@ -12,6 +12,11 @@ fi
 if test `arch` = "x86_64"; then
         ARCH="$ARCH-x64"
 fi
+#stop httpd nginx
+service httpd stop
+service nginx stop
+chkconfig --level 2345 httpd off
+chkconfig --level 2345 nginx off
 URL="http://github.itzmx.com/1265578519/kangle/master/ent/kangle-ent-$VERSION$ARCH.tar.gz"
 wget $URL -O kangle.tar.gz
 tar xzf kangle.tar.gz
