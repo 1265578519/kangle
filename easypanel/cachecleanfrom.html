@@ -1,0 +1,44 @@
+<script language='javascript'>
+	function cache_clean() {
+		var url = $("#url").val();
+		if (url == "") {
+			return alert('值不能为空');
+		}
+		var url_arr = url.split("\n");
+		var clean_url = "";
+		for (i = 0; i < url_arr.length; i++) {
+			if (url_arr[i].substr(0, 4) != 'http') {
+				return alert("输入错误，请检查每个url前面必需有http");
+			}
+			if (url_arr[i].substr(-1) == '*') {
+				url_arr[i] = '3' + url_arr[i].substr(0, url_arr[i].length - 1);
+			}
+			clean_url += url_arr[i] + ', ';
+		}
+		$.ajax({
+			type : "POST",
+			url : '?c=cacheclean&a=cacheclean',
+			data : "url=" + clean_url,
+			success : function(msg) {
+				alert(msg);
+			}
+		});
+	}
+</script>
+<div class='pro_msg' style="display: none" id='msg'></div>
+<div class="main">
+    <div class="public_pa">清除缓存</div>
+<form action='javascript:cache_clean();' method='post'>
+	<table class="table" cellpadding="0" cellspacing="1">
+		<tr>
+			<td style="border:0">每行一个url，https缓存独立，例：<u>http://www.baidu.com/</u> 或 <u>https://www.baidu.com/web/</u></td>
+		</tr>
+		<tr>
+			<td style="border:0"><textarea name="url" id='url' class="span5" cols='62' rows='6'></textarea></td>
+		</tr>
+		<tr>
+			<td style="border:0"><input type='button' value='提交' onclick='cache_clean();' class="btn btn-warning" /></td>
+		</tr>
+	</table>
+</form>
+</div>
