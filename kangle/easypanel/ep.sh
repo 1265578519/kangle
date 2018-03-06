@@ -371,6 +371,8 @@ rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/common/product.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/product.html -O /vhs/kangle/nodewww/webftp/admin/view/default/common/product.html
 rm -rf /vhs/kangle/ext/webalizer.xml
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/log_gz.xml -O /vhs/kangle/ext/log_gz.xml
+rm -rf /vhs/kangle/nodewww/webftp/vhost/view/default/top.html
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/top.html -O /vhs/kangle/nodewww/webftp/vhost/view/default/top.html
 $PREFIX/bin/kangle -q
 killall -9 kangle
 sleep 3

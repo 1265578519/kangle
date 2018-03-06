@@ -1,0 +1,32 @@
+<script type='text/javascript'>
+	jQuery(document).ready(function() {
+		jQuery(".wid_left").mouseover(function() {
+			jQuery(this).addClass('onMouseOver');
+		});
+		jQuery(".wid_left").mouseout(function() {
+			jQuery(this).removeClass('onMouseOver');
+		});
+	});
+</script>
+<div id="ep_main1">
+    <div class="ep_banner"></div>
+	     <div class="ep_main1_settings">
+		     <ul>
+			     <li><a class="index" href='?c=index&a=main'>面板首页</a></li>
+				 <li><a class="ymbd" href='?c=domain&a=show'>域名绑定</a></li>
+				<!-- 
+				<li><a class="weby" href='?c=webapp&a=browse'>web应用中心</a></li>
+				 --> 
+					{{if $webftp_url}}
+				 <li><a class="zxwj" href='{{$webftp_url}}'>在线文件</a></li>
+					{{/if}}
+				
+				 <li><a class="ljxx" href='?c=connection&a=connectionFrom'>连接信息</a></li>
+				 <li><a class="xnfx" href='?c=capability&a=capabilityFrom'>性能分析</a></li>
+					{{if $smarty.session.login_from=='vhost'}}
+				 <li><a class="off" href='?c=session&a=logout'>安全退出</a></li>
+					{{/if}}
+				 <li class="vuser">用户名：{{$vhost}}</li>
+		     </ul>
+	     </div>
+</div>

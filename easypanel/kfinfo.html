@@ -87,12 +87,14 @@ var msg = '{{$msg}}';
 			<li><a class="dkxz" href="?c=speed&a=speedFrom">带宽限制</a></li>
 			<li><a class="hcsz" href='?c=cache&a=cacheFrom'>缓存设置</a></li>
 			<li><a class="qchc" href="?c=cacheclean&a=cachecleanFrom">清除缓存</a></li>
-			{{if $user.cdn==0}}
 			<li><a class="cwdy" href='?c=info&a=showErrorPage'>错误码定义</a></li>
 			<li><a class="ymys" href='?c=response&a=gzipFrom'>网页压缩</a></li>
 			<li><a class="mime" href='?c=mime&a=mimeFrom'>MIME设置</a></li>
+			{{if $user.cdn==0}}
 			<li><a class="mrwj" href='?c=indexfile&a=indexfileFrom'>默认文件</a></li>
+			{{/if}}
 			<li><a class="ymtz" href='?c=rewrite&a=rewriteFrom'>域名跳转</a></li>
+			{{if $user.cdn==0}}
 			<li><a class="cqjc" href='javascript:rebootProcess();'>重起进程</a></li>
 			{{if $dbadmin_url}}
 			<li><a class="sjkgl" href='{{$dbadmin_url}}' target='_blank'>数据库管理</a></li>
@@ -100,24 +102,23 @@ var msg = '{{$msg}}';
 		</ul>
     </div>
 			 
-	{{if $user.cdn==0}}
     <div class="ep_main2_general">
 	    <div class="ep_main_title">空间管理</div>
 	    <ul>
 		    {{if $webftp_url}}
 		    <li><a class="zxwj" href='{{$webftp_url}}'>在线文件</a></li>
 			{{/if}}
+			{{if $user.cdn==0}}
 		    <li><a class="sjbf" href='?c=shell&a=index'>数据备份</a></li>
 			{{if $user.ftp>0}}
 			<li><a class="ftp" href='?c=index&a=ftpForm'>FTP设置</a></li>
-			{{/if}} {{if $ssl}}
+			{{/if}} {{/if}} {{if $ssl}}
 			<li><a class="ssl" href='?c=index&a=sslForm'>SSL证书</a></li>
-			{{/if}} {{if $user.ssi}}
+			{{/if}} {{if $user.cdn==0}} {{if $user.ssi}}
 			<li><a class="ssi" href='?c=ssi&a=show'>SSI设置</a></li>
-            {{/if}}
+            {{/if}} {{/if}}
 		</ul>
     </div>
-	{{/if}}
 			 
     <div class="ep_main2_general">
 	    <div class="ep_main_title">安全管理</div>
@@ -135,9 +136,9 @@ var msg = '{{$msg}}';
 	    <ul>
 		    <li><a class="llt" href='?c=flow&a=viewFlow&t=day'>流量图</a></li>
 		    <li><a class="ljxx" href='?c=connection&a=connectionFrom'>连接信息</a></li>
-			{{if $user.cdn==0}}
-			<li><a class="rzfx" href='/vhost/log.php/' target='_blank'>日志分析</a></li>
+			<!-- <li><a class="rzfx" href='/vhost/log.php/' target='_blank'>日志分析</a></li>-->
 			<li><a class="xnfx" href='?c=capability&a=capabilityFrom'>性能分析</a></li>
+			{{if $user.cdn==0}}
 			{{if $user.cron>0}}
 			<li><a class="jhrw" href='?c=cron&a=index'>计划任务</a></li>
 			{{/if}}
