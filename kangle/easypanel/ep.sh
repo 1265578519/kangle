@@ -375,6 +375,10 @@ rm -rf /vhs/kangle/nodewww/webftp/vhost/view/default/top.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/top.html -O /vhs/kangle/nodewww/webftp/vhost/view/default/top.html
 rm -rf /vhs/kangle/nodewww/webftp/vhost/view/default/cacheclean/cachecleanfrom.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/cachecleanfrom.html -O /vhs/kangle/nodewww/webftp/vhost/view/default/cacheclean/cachecleanfrom.html
+rm -rf /vhs/kangle/ext/tpl_php52/php-templete.ini
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/php-templete.ini -O /vhs/kangle/ext/tpl_php52/php-templete.ini
+rm -rf /vhs/kangle/ext/tpl_php52/etc/php-node.ini
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/php-node.ini -O /vhs/kangle/ext/tpl_php52/etc/php-node.ini
 $PREFIX/bin/kangle -q
 killall -9 kangle
 sleep 3
