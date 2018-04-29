@@ -375,6 +375,12 @@ rm -rf /vhs/kangle/nodewww/webftp/vhost/view/default/top.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/top.html -O /vhs/kangle/nodewww/webftp/vhost/view/default/top.html
 rm -rf /vhs/kangle/nodewww/webftp/vhost/view/default/cacheclean/cachecleanfrom.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/cachecleanfrom.html -O /vhs/kangle/nodewww/webftp/vhost/view/default/cacheclean/cachecleanfrom.html
+rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/nodes/addnode.html
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/addnode.html -O /vhs/kangle/nodewww/webftp/admin/view/default/nodes/addnode.html
+rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/scripts/func.js
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/func.js -O /vhs/kangle/nodewww/webftp/admin/view/default/scripts/func.js
+rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/virtualhost/product.html
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/virtualhost.html -O /vhs/kangle/nodewww/webftp/admin/view/default/virtualhost/virtualhost.html
 rm -rf /vhs/kangle/ext/tpl_php52/php-templete.ini
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/php-templete.ini -O /vhs/kangle/ext/tpl_php52/php-templete.ini
 rm -rf /vhs/kangle/ext/tpl_php52/etc/php-node.ini

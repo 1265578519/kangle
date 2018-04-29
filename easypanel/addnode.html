@@ -1,0 +1,164 @@
+{{include file='common/head.html'}}
+<script language='javascript'>
+function rand_skey(passwd_id) {
+    var pwchars = "abcdefhjmnpqrstuvwxyz23456789ABCDEFGHJKLMNPQRSTUVWYXZ";
+    var passwordlength = 16;    // do we want that to be dynamic?  no, keep it simple :)
+    passwd_id.value = '';
+    for ( i = 0; i < passwordlength; i++ ) {
+    	passwd_id.value += pwchars.charAt( Math.floor( Math.random() * pwchars.length ) )
+    }
+    return true;
+}
+var msg = "{{$msg}}";
+$(document).ready(function(){
+	if (msg != '') {
+		art.dialog({id:'id22',content:msg,icon: 'face-smile',left:'50%',top:'20%'});
+	}
+	var domain = $("#vhost_domain").val();
+	var domainkey = $("#dnsdundomainkey").val();
+	if (domain && domainkey) {
+		var cname = $("#cname_host").val();
+		if (!cname) {
+			$("#cname_host_msg").html("<b class='red'>*必填</b>");
+		}
+	}
+});
+function checkEnt()
+{
+	$.ajax({
+		url:'?c=nodes&a=checkEnt',
+		dataType:'json',
+		success:function(a) {
+			if (a.code != 1) {
+				$("#check_ent_td").html("<img src='/style/check_error.gif'>"+a.message);
+				return ;
+			}
+			$("#check_ent_td").html("<b style='color:green'>过期时间:</b>"+a.expire+" <img src='/style/check_right.gif'>");
+			if (a.warning) {
+				alert(a.warning);
+			}
+		}
+	});
+}
+function showEntMem()
+{
+	var str = "请将得到的授权信息放在kangle安装目录下的nodewww/webftp/config.php文件中\n\n";
+		str += "并且将源index.html文件放在kangle安装目录下的/etc/目录\n\n";
+		str += "使用注意:用户访问站点面板/vhost/时必需使用授权的域名才可生效\n\n";
+	str += "再到些处点击验证授权,如果验证通过，则用户在绑定域名的时候\n\n";
+	str += "会自动将源index.html复制到用户绑定的目录下\n\n";
+	str += "这样用户打开域名时将有一个您制定的默认内容显示给用户\n\n";
+	str += "方便用户快速的使用您的空间,更加友好\n";
+	alert(str);
+	
+}
+function testDnsdun()
+{
+	var dnsdundomain = $("#dnsdundomain").val();
+	var vhost_domain = $("#vhost_domain").val();
+	var domainkey = $("#dnsdundomainkey").val();
+	if (!dnsdundomain || !domainkey || !vhost_domain) {
+		alert('赠送域名,dnsdun域名或api密钥未填写');
+		return;
+	}
+	if (dnsdundomain != vhost_domain) {
+		var vl = vhost_domain.length;
+		if( vhost_domain.substr(vl - dnsdundomain.length) != dnsdundomain ) {
+			alert('dnsdun的域名必需为赠送域名的主域名');
+			return;
+		}
+	}
+	
+	$("#cname_host_msg").html("<b class='red'>*必填</b>");
+	$.ajax({url:'?c=nodes&a=testDnsdun',data:{domain:dnsdundomain,domainkey:domainkey},dataType:'json',success:function(ret) {
+		if (ret['code'] != 200) {
+			$("#dnsdun_test").html("<img src='/style/check_error.gif'><b class='red'>不可用</b>");
+			return;
+		}
+		$("#dnsdun_test").html("<img src='/style/check_right.gif'><font color='green'>可用</font>");
+	}
+	});	
+	
+}
+
+</script>
+<div align="center">
+	<div class="wid_main mar_main" align="left">
+		<div class="block_top" align="left">当前位置：服务器管理 --> 设置服务器信息</div>
+		<form name='nodeform' action="?c=nodes&a={{$action}}&name={{$node.name}}" method="post">
+		<table class="table table-striped" cellpadding="0" cellspacing="1">
+			
+			<tr><td colspan="2" ><b>设置服务器信息</b></td></tr>
+			
+			<tr><td>日志保存时间:</td>
+				<td><input name="logs_day"  size='4' value="{{if $setting.logs_day}}{{$setting.logs_day}}{{else}}60{{/if}}">&nbsp;天
+					<input name="webalizer" type="checkbox" value='1' {{if $setting.webalizer==1}}checked{{/if}}>
+					开启日志压缩
+					<input name="no_del_data" type="checkbox" value='1' {{if $setting.no_del_data!=0}}checked{{/if}}>
+					删除网站保留数据
+					</td>
+			</tr>  
+			<tr><td>mysql数据库:</td>
+				<td>账号:<input name="db_user"  id='db_user' value="{{if $node.db_user}}{{$node.db_user}}{{/if}}">
+					密码:<input name="db_passwd"  type="password" id='db_passwd' value="{{$node.db_passwd}}"  autoComplete='off'>
+					端口:<input name="db_port"  size=5 id='db_port' value="{{$node.db_port}}" >
+					主机:<input name="db_host"  id='db_host' value="{{$node.db_host}}" >
+					删除test数据库<input name="del_test_database" type='checkbox' value=1 {{if !$node.db_user&&!$node.db_passwd}}checked{{/if}}>
+					</td></tr>
+	  		{{if strcasecmp(substr( php_uname('s'),0,3),'win')==0}} 
+			<tr><td>sqlserver数据库:</td>
+				<td>账号:<input name="sqlsrv_user"  id='sqlsrv_user' value="{{$node.sqlsrv_user}}">
+					 密码:<input name="sqlsrv_passwd" type="password" id='sqlsrv_passwd' value="{{$node.sqlsrv_passwd}}"  autoComplete='off'>
+					 端口:<input name="sqlsrv_port" size=5 id='sqlsrv_port' value="{{if $node.sqlsrv_port}}{{$node.sqlsrv_port}}{{/if}}"  autoComplete='off'></td></tr>	       
+			{{/if}} 
+			<tr><td>物理盘:</td>
+				<td><select name='dev'>
+					{{foreach from=$devs item=dev}}
+					<option value='{{$dev}}' {{if $dev==$node.dev}}selected{{/if}}>{{$dev}}</option>
+					{{/foreach}}
+					</select>
+					<font color=red>*必选，网站空间将创建在该盘，如此处未设置，则无法开通网站.</font></td></tr>
+			<tr><td>kangle端口设置</td>
+				<td>
+				<!-- easypanel端口<input name='ep_port' size='5' value="{{if $node.ep_port}}{{$node.ep_port}}{{else}}3312{{/if}}"/> -->
+				<input name='port' size='5' value="{{if $node.port}}{{$node.port}}{{else}}3311{{/if}}"/>
+				</td></tr>
+			<tr><td>面板通信安全码:</td>
+				<td><input name='skey'  value="{{$setting.skey}}"/><input type="button" onclick='rand_skey(this.form.skey)' value='随机'>	</td></tr>
+			<!--  
+			<tr><td title="">检查授权:</td>
+				<td id="check_ent_td"><input type="button" onclick='showEntMem()' value='功能说明'><input type="button" onclick='checkEnt()' value='检测'><b style='color:red'>&nbsp;<a href="http://vl.kanglesoft.com/user/" target=_blank>购买授权</a></b></td></tr>
+			-->
+			<tr title='用于开通空间后，自动给空间绑定一个二级域名'><td>赠送域名:</td>
+				<td>
+				域名:<input name='vhost_domain' size=32  id="vhost_domain" value="{{$setting.vhost_domain}}"/>
+				域名绑定CNAME记录<input name='cname_host' size=32 id="cname_host" value="{{$setting.cname_host}}" title="启用dnsdun此处写解析记录,如id.domain.com，如不启用dnsdun，此处可写IP，用于用户面板域名绑定处提示"/>
+				如启用了dnsdun自动解析，该条记录指向到本服务器IP的<b>A</b>记录到<b>dnsdun手动添加</b>
+				<span id="cname_host_msg"></span>
+				
+				</td></tr>
+			<tr title='接入dnsdun可自动将赠送用户的二级域名自动在dnsdun上生成解析记录'><td>dnsdun接入:<a href="#" onclick='testDnsdun();'>测试连接</a><span id="dnsdun_test"></span></td>
+				<td>
+				域名:<input name='dnsdundomain' size=32  id="dnsdundomain" value="{{$setting.dnsdundomain}}"/>
+				域名密钥:<input name='dnsdundomainkey' size=32  id="dnsdundomainkey" value="{{$setting.dnsdundomainkey}}"/>
+				
+				没有请到<a href="http://www.dnsdun.com" target=_blank>www.dnsdun.com</a>添加域名</td></tr>
+			<tr><td>模板目录:</td>
+				<td><select name='view_dir'>
+						{{for $i=0;$i<$view_dir_count;$i++}}
+						<option value="{{$view_dir[$i]}}" {{if $setting.view_dir==$view_dir[$i]}}selected {{/if}}/>{{$view_dir[$i]}}</option>
+						{{/for}}
+					</select>  &nbsp;用于切换admin和vhost目录下view目录的模板</td></tr>
+			<tr><td>FTP相关设置:</td>
+				<td>ftp端口<input name='ftp_port' size=5  value="{{if $setting.ftp_port}}{{$setting.ftp_port}}{{else}}21{{/if}}"/>
+				pasv端口范围(最小端口:最大端口)<input name='ftp_pasv_port'  value="{{$setting.ftp_pasv_port}}"/></td></tr>
+			<tr><td>面板title(商业版):</td>
+				<td><input name='title'  size=54 value="{{$setting.title}}"/></td></tr>
+			<tr><td>面板foot代码(商业版):</td>
+				<td><textarea name='footer' cols=60 rows=4>{{$setting.footer}}</textarea></td></tr>
+			<tr><td  colspan="2" align="center"><input type="submit" value="确认提交" class="btn"  style="width:200px;margin-left:200px;"></td></tr>
+		</table>
+		</form>
+	</div>
+</div>
+{{dispatch c='index'  a='foot'}}

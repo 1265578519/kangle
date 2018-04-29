@@ -227,7 +227,7 @@ function check_db(status)
 				<input type='checkbox' name='htaccess' id='htaccess' value='.htaccess' {{if $vhost.htaccess || !$vhost}}checked{{/if}}>.htaccess支持
 				<input type='checkbox' name='ftp' id='ftp' value='1' {{if $vhost.ftp || !$vhost}}checked{{/if}}>开启ftp
 				<input type='checkbox' name='log_file' id='log_file' value='logs/access.log' {{if $vhost.log_file || !$vhost}}checked{{/if}}>日志独立
-				<input type='checkbox' name='log_handle' id='log_handle' value='1' {{if $vhost.log_handle || $setting.webalizer}}checked{{/if}}>日志分析
+				<input type='checkbox' name='log_handle' id='log_handle' value='1' {{if $vhost.log_handle || $setting.webalizer}}checked{{/if}}>日志压缩
 				<input type='checkbox' name='access' id='access' value='access.xml' {{if $vhost.access || !$vhost}}checked{{/if}}>自定义控制
 				<input type='checkbox' name='ssi' id='ssi' value='1' {{if $vhost.ssi || !$vhost}}checked{{/if}}>ssi支持
 				<input type='checkbox' name='ignore_backup'  value='1' {{if $vhost.ignore_backup}}checked{{/if}}>忽略备份

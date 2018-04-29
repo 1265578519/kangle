@@ -1,0 +1,107 @@
+{{include file='common/head.html'}}
+<script language='javascript'>
+var use_msg_id;
+</script>
+<script language='javascript' src='{{$STATIC}}scripts/func.js'></script>
+<script language='javascript'>
+	//obj.getAttribute("onclick")
+	$(document).ready(function(){
+		$("li").each(function(){
+			if (this.getAttribute("onclick")) {
+				return;
+			}
+			/*
+			this.onclick = function(){
+				if (use_msg_id != undefined) {
+					if (this.id != use_msg_id) {
+						close_piao('msg');
+					}
+				}
+			}
+			*/
+		});
+		/*
+		document.onclick=function(){
+			close_piao('msg');
+			
+			
+		}
+		*/
+	});
+	
+</script>
+<style type='text/css'>
+.piao_msg {
+	position: absolute;
+	background-color: #218868;
+	color: red;
+	text-align: center;
+	font-size: 12;
+}
+
+.piao_ul {
+	list-style-type: none;
+	width: 100%;
+	height: 100%;
+}
+</style>
+<div align="center" id='body_div'>
+	<div class="wid_main mar_main" align="left">
+		<div class="block_top" align="left">当前位置：服务器管理 --> 虚拟主机设置</div>
+		<table class="table">
+			<tr>
+				<td>
+					<ul class="host_ul">
+						<li><a href='?c=response&a=gzipFrom' target='main'><img
+								src="{{$STATIC}}style/fil_zip_1.gif" border="0" /><br /> <b>开启gzip压缩</b></a></li>
+						<li><a href='?c=access&a=ip' target='main'><img
+								src="{{$STATIC}}style/fatcow_1425.gif" border="0" /><br /> <b>禁止ip访问</b></a></li>
+						<li><a href='?c=access&a=filterFrom' target='main'><img
+								src="{{$STATIC}}style/1541.gif" border="0" /><br /> <b>内容过滤</b></a></li>
+						<li><a href='?c=domain&a=domainFrom' target='main'><img
+								src="{{$STATIC}}style/yuming.gif" border="0" /><br /> <b>域名设置</b></a></li>
+						<li><a
+							href='javascript:if(confirm("当有域名绑定不了时可运行，确定要执行?")){ window.location="?c=vhost&a=delExpireDomain";}'
+							target='main' title="当有域名绑定不上,或删除的空间已很久时可运行此处"><img
+								src="{{$STATIC}}style/qinchu.gif" border="0" /><br /> <b>清理无主域名</b></a></li>
+						<li><a href='?c=hostcdn&a=hostcdn' target='main'><img
+								src="{{$STATIC}}style/fandai.gif" border="0" /><br /> <b>反向代理设置</b></a></li>
+						<li><a href='javascript:reset_cron()' target='main'><img
+								src="{{$STATIC}}style/resetcron.png" border="0"
+								title='当计划任务不执行时,可运行' /><br /> <b>重置计划任务</b></a></li>
+					</ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<ul class="host_ul">
+						<li><a href='javascript:del_cache()' target='main'><img
+								src="{{$STATIC}}style/fil_zip_1.gif" border="0" /><br /> <b>清理模板缓存</b></a></li>
+
+						<li id='lis' onclick='piao_loghanle(this)'><a
+							href='#' target='main'><img
+								src="{{$STATIC}}style/fil_zip_1.gif" border="0" /><br /> <b>日志压缩</b></a></li>
+
+						<li id='ftp' onclick='piao_ftp(this)'><a href='#' target='main'><img
+								src="{{$STATIC}}style/fil_zip_1.gif" border="0" /><br /> <b>ftp开关</b></a></li>
+
+						<li id='ftp_connect' onclick='piao_ftpconnect(this)'><a href='#' target='main'><img
+								src="{{$STATIC}}style/fil_zip_1.gif" border="0" /><br /> <b>ftp连接数</b></a></li>
+
+						<li id='ftp_usl' onclick='piao_ftpusl(this)'><a href='#' target='main'><img
+								src="{{$STATIC}}style/fil_zip_1.gif" border="0" /><br /> <b>ftp上传速度</b></a></li>
+
+						<li id='ftp_dsl' onclick='piao_ftpdsl(this)'><a href='#' target='main'><img
+								src="{{$STATIC}}style/fil_zip_1.gif" border="0" /><br /> <b>ftp下载速度</b></a></li>
+
+						<li id='htaccess' onclick='piao_htaccess(this)'><a href='#' target='main'><img
+								src="{{$STATIC}}style/fil_zip_1.gif" border="0" /><br /> <b>htaccess开关</b></a></li>
+					</ul>
+				</td>
+			</tr>
+
+		</table>
+	</div>
+</div>
+<div id='msg' class='piao_msg' style='display: none'></div>
+
