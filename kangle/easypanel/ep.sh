@@ -379,7 +379,7 @@ rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/nodes/addnode.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/addnode.html -O /vhs/kangle/nodewww/webftp/admin/view/default/nodes/addnode.html
 rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/scripts/func.js
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/func.js -O /vhs/kangle/nodewww/webftp/admin/view/default/scripts/func.js
-rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/virtualhost/product.html
+rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/virtualhost/virtualhost.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/virtualhost.html -O /vhs/kangle/nodewww/webftp/admin/view/default/virtualhost/virtualhost.html
 rm -rf /vhs/kangle/ext/tpl_php52/php-templete.ini
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/php-templete.ini -O /vhs/kangle/ext/tpl_php52/php-templete.ini
