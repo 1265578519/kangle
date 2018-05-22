@@ -41,4 +41,5 @@ wget http://github.itzmx.com/1265578519/kangle/master/easypanel/index.html -O $P
 $PREFIX/bin/kangle -q
 killall -9 kangle
 sleep 3
+$PREFIX/bin/kangle -z /var/cache/kangle
 $PREFIX/bin/kangle
