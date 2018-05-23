@@ -28,7 +28,7 @@ mkdir -p $PREFIX
 wget http://github.itzmx.com/1265578519/kangle/master/ent/license/Ultimate/license.txt -O $PREFIX/license.txt
 ./install.sh $PREFIX
 $PREFIX/bin/kangle
-echo "/vhs/kangle/bin/kangle" >> /etc/rc.d/rc.local
+echo "$PREFIX/bin/kangle" >> /etc/rc.d/rc.local
 /sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 /sbin/iptables -I INPUT -p tcp --dport 443 -j ACCEPT
 /sbin/iptables -I INPUT -p tcp --dport 3311 -j ACCEPT
