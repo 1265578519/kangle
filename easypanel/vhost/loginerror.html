@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='zh-CN' xml:lang='zh-CN' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>easypanel - 用户网站控制面板登陆</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="{{$STATIC}}style/login.css" type="text/css" media="all" />
+<div class="login_container">
+	<div class="login_ico_bg"></div>
+	<div class="login_logo"></div>
+	<div id="login">
+		<div class="logo"></div>
+			<form action="index.php?c=session&a=login" method=post name="form1">
+				<table class="table">
+					
+	<table class="table">
+		<tr>
+			<td style="text-align:center"><h1>{{$errormsg}}</h1></td>
+			<td style="text-align:center"><a href="?c=session&a=loginForm"><h3 style="color:green">重新登陆</h3></a></td>
+		</tr>
+	</table>
+					
+				</table>
+			</form>
+		</div>
+<script language='javascript' src='cnzz.html?id={{$partner_id}}&version={{$EASYPANEL_VERSION}}'></script>
+		<div class="ver">Powered by <a href="http://www.kanglesoft.com">easypanel</a></div>
+		<div class="clear"></div>
+		<!-- 这里不能加 dispatch c='index' a='foot' 这个代码，会引起权限不够导致致跳转。-->
+	</div>
+
+
+
+
+
+

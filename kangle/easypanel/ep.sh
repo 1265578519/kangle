@@ -381,6 +381,24 @@ rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/scripts/func.js
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/func.js -O /vhs/kangle/nodewww/webftp/admin/view/default/scripts/func.js
 rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/virtualhost/virtualhost.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/virtualhost.html -O /vhs/kangle/nodewww/webftp/admin/view/default/virtualhost/virtualhost.html
+rm -rf /vhs/kangle/nodewww/webftp/admin/cnzz.html
+rm -rf /vhs/kangle/nodewww/webftp/vhost/cnzz.html
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/cnzz.html -O /vhs/kangle/nodewww/webftp/admin/cnzz.html
+\cp -f /vhs/kangle/nodewww/webftp/admin/cnzz.html /vhs/kangle/nodewww/webftp/vhost/cnzz.html
+rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/common/foot.html
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/admin/foot.html -O /vhs/kangle/nodewww/webftp/admin/view/default/common/foot.html
+rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/main.html
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/admin/main.html -O /vhs/kangle/nodewww/webftp/admin/view/default/main.html
+rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/main.html
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/admin/main.html -O /vhs/kangle/nodewww/webftp/admin/view/default/main.html
+rm -rf /vhs/kangle/nodewww/webftp/vhost/view/default/common/foot.html
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/vhost/foot.html -O /vhs/kangle/nodewww/webftp/vhost/view/default/common/foot.html
+rm -rf /vhs/kangle/nodewww/webftp/vhost/view/default/common/head.html
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/vhost/head.html -O /vhs/kangle/nodewww/webftp/vhost/view/default/common/head.html
+rm -rf /vhs/kangle/nodewww/webftp/vhost/view/default/login.html
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/vhost/login.html -O /vhs/kangle/nodewww/webftp/vhost/view/default/login.html
+rm -rf /vhs/kangle/nodewww/webftp/vhost/view/default/loginerror.html
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/vhost/loginerror.html -O /vhs/kangle/nodewww/webftp/vhost/view/default/loginerror.html
 rm -rf /vhs/kangle/ext/tpl_php52/php-templete.ini
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/php-templete.ini -O /vhs/kangle/ext/tpl_php52/php-templete.ini
 rm -rf /vhs/kangle/ext/tpl_php52/etc/php-node.ini

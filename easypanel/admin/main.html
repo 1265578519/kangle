@@ -1,0 +1,173 @@
+{{include file='common/head.html'}}
+<script language='javascript' src='{{$PSTATIC}}/style/common.js'></script>
+<script language='javascript' src='/style/jquery.js'></script>
+<script language='javascript'>
+	function getSysInfo() {
+		var url = '?c=index&a=getSysInfo';
+		$.getJSON(url, outInfo);
+	}
+	function outInfo(info) {
+		if (info['os'] == 'windows') {
+			var mem = "已用:" + parseInt(info['memUsed']) + " M 空闲:" + parseInt(info['memFree'])
+				+ " M 总共: " + parseInt(info['memTotal']) + " M";
+		}else {
+			var mem = "已用:" + parseInt(info['memRealUsed']) + " M 空闲:" + parseInt(info['memTotal']- info['memRealUsed']) + 'M(系统缓存使用:' + parseInt(info['memCached']) 
+			+ " M) 总共: " + parseInt(info['memTotal']) + " M";
+		}
+		$('#mem').html(mem);
+		$('#avg').html(info['loadAvg']);
+		$('#time').html(info['uptime']);
+	}
+	$(document).ready(function() {
+		$.ajax( {
+			type : 'get',
+			url : '?c=index&a=checkBind',
+			data : null,
+			dataType : 'json',
+			success : function(msg) {
+				if (msg['code'] != 400) {
+					var img = 'dns:<img src=/style/';
+					if (msg['code'] == 200) {
+						img += 'check_right.gif';
+					} else {
+						img += 'check_error.gif';
+					}
+					img += '>';
+					$("#localhost").append(img);
+				}
+			}
+		});
+	});
+</script>
+<div align="center">
+<div class="wid_main mar_main" align="left">
+<div class="block_top" align="left">当前位置：服务器管理 --> 服务器信息</div>
+<table class="table" cellpadding="0" cellspacing="1">
+	<thead>
+			<tr>
+				<td style="width:200px"><b>服务器信息</b></td>
+				<td style="width:auto">&nbsp;</td>
+			</tr>
+			</thead>
+			<tbody>
+	<tr>
+		<td>服务器IP:</td>
+		<td>{{gethostbyname($smarty.server.SERVER_NAME)}}<!--&nbsp;&nbsp;  [<a href='?c=index&a=rebootSystem'><font color='red'>重启服务器</font></a>]--></td>
+	</tr>
+
+	<tr>
+		<td>easypanel版本:</td>
+		<td>{{$EASYPANEL_VERSION}}
+		<div id="version_note"></div>
+		</td>
+	</tr>
+
+	<tr>
+		<td>kangle版本:</td>
+		<td>{{$info->get('type')}} {{$info->get('version')}}[<a
+			href='{{$kangle_console_url}}' target=_blank><font color='red'>进入kangle管理后台</font></a>]</td>
+	</tr>
+
+	<tr>
+		<td>内存信息:</td>
+		<!-- <td>已用:{{$sysinfo.memUsed}}M 空闲:{{$sysinfo.memFree}}M 总共:{{$sysinfo.memTotal}}M</td></tr> -->
+		<td id='mem'>正在加载...<img src="/style/busy.gif"></td>
+	</tr>
+
+	<tr>
+		<td>系统负载:</td>
+		<!--<td>{{$sysinfo.loadAvg}}</td></tr>-->
+		<td id='avg'></td>
+	</tr>
+	<tr>
+		<td>已启动:</td>
+		<!--<td>{{$sysinfo.uptime}}</td></tr>-->
+		<td id='time'></td>
+	</tr>
+
+	<tr>
+		<td>管理员账号:</td>
+		<td>{{$role.admin}}</td>
+	</tr>
+	<tr>
+		<td>系统数据库:</td>
+		<td>
+		{{if "ok"==$dbisok}}<font color=green>没有问题</font>{{else}}<font color=red>有问题:{{$dbisok}}</font>{{/if}}
+		</td>
+	</tr>
+	<tr>
+		<td>服务器状态:</td>
+		<td>
+		<div id='localhost'></div>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center"><span id='version_note'></span></td>
+	</tr>
+	</tbody>
+	
+</table>
+</div>
+</div>
+<script language='javascript'>
+	var xmlhttp2 = new Array();
+	function checkNodeResult(node) {
+		if (xmlhttp2[node].readyState == 4) {
+			var whm = 0;
+			var db = 0;
+			var sqlsrv = 0;
+			try {
+				if (xmlhttp2[node].status == 200) {
+					var dataArray = xmlhttp2[node].responseXML
+							.getElementsByTagName('result');
+					//var node = dataArray[0].getAttribute('node');
+					whm = dataArray[0].getAttribute('whm');
+					db = dataArray[0].getAttribute('db');
+					sqlsrv = dataArray[0].getAttribute('sqlsrv');
+				}
+				var msg = "web:<img src='{{$PSTATIC}}/style/";
+				if (whm == 1) {
+					msg += "check_right.gif";
+				} else {
+					msg += "check_error.gif";
+				}
+				msg += "'/>";
+				if (db != 2) {
+					msg += "mysql:<img src='{{$PSTATIC}}/style/";
+					if (db == 1) {
+						msg += "check_right.gif";
+					} else {
+						msg += "check_error.gif";
+					}
+					msg += "'/>";
+				}
+				if (sqlsrv != 2) {
+					msg += "sql server:<img src='{{$PSTATIC}}/style/";
+					if (sqlsrv == 1) {
+						msg += "check_right.gif";
+					} else {
+						msg += "check_error.gif";
+					}
+					msg += "'/>";
+				}
+			} catch (e) {
+				msg = "查询出错";
+			}
+			xxkf_obj(node).innerHTML = msg;
+		}
+	}
+	function checkNode(node) {
+		var url = '?c=nodes&a=ajaxCheckNode&node=' + node;
+		xxkf_obj(node).innerHTML = "<img src='{{$PSTATIC}}/style/busy.gif'/>";
+		//ajax_open_url2(,checkNodeResult);
+		xmlhttp2[node] = create_xmlhttp();
+		xmlhttp2[node].open("GET", url, true);
+		xmlhttp2[node].onreadystatechange = function() {
+			checkNodeResult(node);
+		};
+		xmlhttp2[node].send(null);
+	}
+	checkNode('localhost');
+	getSysInfo();
+</script>
+{{dispatch c='index' a='foot'}}

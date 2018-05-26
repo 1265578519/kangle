@@ -1,0 +1,15 @@
+    <div id="ft">
+    	{{if $setting.footer!="" && $setting.kangle_type=='enterprise'}}
+		{{$setting.footer}} {{else}}
+    	<p>
+		Powered by <strong><a href="http://www.kanglesoft.com/"
+				target="_blank">easypanel/{{$EASYPANEL_VERSION}}</a> (c) 2010</strong>
+		</p>
+		<script language='javascript'
+			src='cnzz.html?id={{$partner_id}}&version={{$EASYPANEL_VERSION}}'></script>
+		{{/if}}
+	</div>
+	<script type="text/javascript"></script>
+</div>
+</body>
+</html>

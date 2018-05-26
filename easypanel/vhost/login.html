@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='zh-CN' xml:lang='zh-CN' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>easypanel - 用户网站控制面板登陆</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="{{$STATIC}}style/login.css" type="text/css" media="all" />
+<div class="login_container">
+	<div class="login_ico_bg"></div>
+	<div class="login_logo"></div>
+	<div id="login">
+		<div class="logo"></div>
+			<form action="index.php?c=session&a=login" method=post name="form1">
+				<table class="table">
+				
+					<tr>
+						<td style="text-align:center">用户名</td>
+						<td><input type="text" name="username" id="username"/></td>
+					</tr>
+					<tr>
+						<td style="text-align:center">密&nbsp;&nbsp;码</td>
+						<td><input type="password" name="passwd" /></td>
+					</tr>
+					{{if $img}}
+					<tr>
+					<td style="text-align:center">
+					验证码</td>
+					<td ><input name='imgnumber'></td>
+					<tr><td>&nbsp;</td>
+					<td><img src="?c=session&a=initImg&action=init"></td></tr>
+					{{/if}}
+					<tr>
+						<td colspan="2" style="padding:24px 0 0;text-align:center"><input class="login_btn" type="submit" value="" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+<script language='javascript' src='cnzz.html?id={{$partner_id}}&version={{$EASYPANEL_VERSION}}'></script>
+		<div class="ver">Powered by <a href="http://www.kanglesoft.com">easypanel</a></div>
+		<div class="clear"></div>
+		{{dispatch c='index' a='foot'}}
+	</div>
