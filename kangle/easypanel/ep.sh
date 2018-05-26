@@ -389,8 +389,8 @@ rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/common/foot.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/admin/foot.html -O /vhs/kangle/nodewww/webftp/admin/view/default/common/foot.html
 rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/main.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/admin/main.html -O /vhs/kangle/nodewww/webftp/admin/view/default/main.html
-rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/main.html
-wget http://github.itzmx.com/1265578519/kangle/master/easypanel/admin/main.html -O /vhs/kangle/nodewww/webftp/admin/view/default/main.html
+rm -rf /vhs/kangle/nodewww/webftp/admin/view/default/login_error.html
+wget http://github.itzmx.com/1265578519/kangle/master/easypanel/admin/login_error.html -O /vhs/kangle/nodewww/webftp/admin/view/default/login_error.html
 rm -rf /vhs/kangle/nodewww/webftp/vhost/view/default/common/foot.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/vhost/foot.html -O /vhs/kangle/nodewww/webftp/vhost/view/default/common/foot.html
 rm -rf /vhs/kangle/nodewww/webftp/vhost/view/default/common/head.html
