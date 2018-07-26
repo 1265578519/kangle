@@ -58,6 +58,10 @@
                 <acl_url  nc='1'><![CDATA[:3312/admin/[\s\S]*c=system&a=editFile&]]></acl_url>
                 <mark_param  revers='1'  name='file' value='/vhs/kangle/etc/../ext/tpl_php52/php-templete.ini' get='1'  post='1'  icase='1'  charset=''></mark_param>
             </chain>
+            <chain  action='deny' >
+                <acl_url revers='1'  nc='1'><![CDATA[:3312/vhost/[\s\S]*c=webftp&a=]]></acl_url>
+                <mark_param   value='.*(exec|insert|truncate|char|declare|union|replace|alter|grant|etc/|win.ini|chmod|closedir|copy|dir|escapeshellarg|escapeshellcmd|phpinfo|fclose|fileperms|fopen|fread|fwrite|is_dir|link|mkdir|opendir|passthru|proc_close|proc_get_status|proc_nice|proc_open|proc_terminate|readdir|rename|rmdir|shell_exec|system|tempnam|touch|unlink)+.*' get='1'  post='1'  icase='1'  charset=''></mark_param>
+            </chain>
 			<chain  action='continue' >
                 <mark_replace_ip   header='X-Real-Ip' > </mark_replace_ip>
             </chain>
