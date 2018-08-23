@@ -36,6 +36,8 @@ echo "$PREFIX/bin/kangle" >> /etc/rc.d/rc.local
 /sbin/iptables -I INPUT -p tcp --dport 3313 -j ACCEPT
 /sbin/iptables -I INPUT -p tcp --dport 21 -j ACCEPT
 /etc/rc.d/init.d/iptables save
+service ip6tables stop
+chkconfig ip6tables off
 rm -rf $PREFIX/www/index.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/index.html -O $PREFIX/www/index.html
 $PREFIX/bin/kangle -q
