@@ -37,9 +37,13 @@
             <chain  action='deny' >
                 <mark_check_black_list></mark_check_black_list>
             </chain>
-                <chain  action='deny' >
-                <acl_url  nc='1'><![CDATA[:3312/api/]]></acl_url>
+            <chain  action='deny' >
+				<acl_url  nc='1'><![CDATA[:3312/api/]]></acl_url>
 				<acl_url revers='1'  nc='1'><![CDATA[:3312/api/[\s\S]*a=migrate]]></acl_url>
+				<acl_url revers='1'  nc='1'><![CDATA[:3312/api/[\s\S]*a=list]]></acl_url>
+				<acl_url revers='1'  nc='1'><![CDATA[:3312/api/[\s\S]*a=test]]></acl_url>
+				<acl_url revers='1'  nc='1'><![CDATA[:3312/api/[\s\S]*a=get]]></acl_url>
+				<acl_url revers='1'  nc='1'><![CDATA[:3312/api/[\s\S]*a=sync]]></acl_url>
                 <acl_ip_rate request='6' second='60'></acl_ip_rate>
                 <mark_black_list></mark_black_list>
             </chain>
@@ -63,6 +67,7 @@
                 <acl_url revers='1'  nc='1'><![CDATA[:3312/vhost/[\s\S]*c=webftp&a=]]></acl_url>
                 <acl_url revers='1'  nc='1'><![CDATA[:3312/admin/[\s\S]*c=migrate&a=]]></acl_url>
                 <acl_url revers='1'  nc='1'><![CDATA[:3312/api/[\s\S]*a=migrate]]></acl_url>
+                <acl_url revers='1'  nc='1'><![CDATA[:3312/api/[\s\S]*=sync]]></acl_url>
                 <acl_url revers='1'  nc='1'><![CDATA[:3312/vhost/[\s\S]*c=anticc&a=]]></acl_url>
                 <acl_url revers='1'  nc='1'><![CDATA[:3312/vhost/[\s\S]*c=protection&a=]]></acl_url>
                 <acl_url revers='1'  nc='1'><![CDATA[:3312/vhost/[\s\S]*c=index&a=ssl]]></acl_url>
