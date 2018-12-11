@@ -2,6 +2,15 @@
 yum -y install bzip2-devel libxml2-devel curl-devel db4-devel libjpeg-devel libpng-devel freetype-devel pcre-devel zlib-devel sqlite-devel libmcrypt-devel unzip bzip2
 yum -y install mhash-devel openssl-devel
 yum -y install libtool-ltdl libtool-ltdl-devel
+yum -y remove libzip-devel
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.3/730/libzip-1.3.2.tar.gz -O libzip-1.3.2.tar.gz
+tar xvf libzip-1.3.2.tar.gz
+cd libzip-1.3.2
+./configure
+make -j 4
+make install
+mv -f /usr/lib64/libzip.so.5 /usr/lib64/libzip.so.5.bak
+ln -s /usr/local/lib/libzip.so.5 /usr/lib64/libzip.so.5
 PREFIX="/vhs/kangle/ext/tpl_php730"
 ZEND_ARCH="i386"
 LIB="lib"
@@ -54,14 +63,6 @@ cd ..
 wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.3/730/libmemcached-1.0.18.tar.gz
 tar -zxvf libmemcached-1.0.18.tar.gz
 cd libmemcached-1.0.18
-./configure
-make -j 4
-make install
-cd ..
-#install autoconf
-wget http://ftp.gnu.org/gnu/autoconf/autoconf-latest.tar.gz
-tar -zxvf autoconf-latest.tar.gz
-cd autoconf-2.69
 ./configure
 make -j 4
 make install
