@@ -17,7 +17,7 @@
 <env PHP_FCGI_MAX_REQUESTS='0' PHPRC='/tmp/php-${name}.ini'/>
 </cmd>
 <cmd name='nodephp' file='/vhs/kangle/ext/tpl_php5639/bin/php-cgi' listen='local' lock='0' type='mp' proto='fastcgi'>
-<env PHP_FCGI_MAX_REQUESTS='0' PHPRC='/vhs/kangle/ext/tpl_php52/etc/php-node-5633.ini'/>
+<env PHP_FCGI_MAX_REQUESTS='0' PHPRC='/vhs/kangle/ext/tpl_php52/etc/php-node-5639.ini'/>
 </cmd>
 </extends>
 <vhs>
