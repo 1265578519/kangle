@@ -50,6 +50,14 @@ wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.3/730/ioncube-$ZE
 unzip ioncube-$ZEND_ARCH-7.3.zip
 mkdir -p $PREFIX/ioncube
 mv ioncube_loader_lin_7.3.so $PREFIX/ioncube/ioncube_loader_lin_7.3.so
+#install autoconf
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.3/730/autoconf-2.69.tar.gz
+tar zxf autoconf-2.69.tar.gz
+cd autoconf-2.69
+./configure
+make -j 4
+make install
+cd ..
 #install apcu
 wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.3/730/apcu-5.1.15.tgz
 tar zxf apcu-5.1.15.tgz
@@ -77,13 +85,13 @@ make -j 4
 make install
 cd ..
 #install memcache
-wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.3/730/php-memcache-3.0.9-dev.zip
-unzip -o php-memcache-3.0.9-dev.zip
-cd php-memcache-3.0.9-dev
-/vhs/kangle/ext/tpl_php730/bin/phpize
-./configure --with-php-config=/vhs/kangle/ext/tpl_php730/bin/php-config
-make -j 4
-make install
-cd ..
+#wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.3/730/php-memcache-3.0.9-dev.zip
+#unzip -o php-memcache-3.0.9-dev.zip
+#cd php-memcache-3.0.9-dev
+#/vhs/kangle/ext/tpl_php730/bin/phpize
+#./configure --with-php-config=/vhs/kangle/ext/tpl_php730/bin/php-config
+#make -j 4
+#make install
+#cd ..
 rm -rf /tmp/*
 /vhs/kangle/bin/kangle -r
