@@ -71,8 +71,8 @@ cd ..
 wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.1/7125/php-memcache-3.0.9-dev.zip
 unzip -o php-memcache-3.0.9-dev.zip
 cd php-memcache-3.0.9-dev
-/vhs/kangle/ext/tpl_php7125/bin/phpize
-./configure --with-php-config=/vhs/kangle/ext/tpl_php7125/bin/php-config
+/vhs/kangle/ext/tpl_php7033/bin/phpize
+./configure --with-php-config=/vhs/kangle/ext/tpl_php7033/bin/php-config
 make -j 4
 make install
 cd ..

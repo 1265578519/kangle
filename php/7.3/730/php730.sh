@@ -58,6 +58,14 @@ cd libmemcached-1.0.18
 make -j 4
 make install
 cd ..
+#install autoconf
+wget http://ftp.gnu.org/gnu/autoconf/autoconf-latest.tar.gz
+tar -zxvf autoconf-latest.tar.gz
+cd autoconf-2.69
+./configure
+make -j 4
+make install
+cd ..
 #install memcached
 wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.3/730/php-memcached-3.1.0-dev.zip
 unzip -o php-memcached-3.1.0-dev.zip
