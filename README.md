@@ -56,6 +56,25 @@ kangle web server 8核心8G内存VPS实测跑60W并发连接数妥妥的
 
 kangle web server 更新日志
 -------
+2018-08-22 kangle 3.5.14
+修复无法和openssl 1.1.0编译的bug
+linux下编译无需依赖libaio.h
+增加请求控制中add_response_header模块，用于回应301，302时插入自定义的header
+增加PROXY协议,四层代理时，可传递真实地址.
+修复一些小问题。
+
+2018-06-08 kangle 3.5.13.2
+修复有限速的情况下会导致连接资源泄漏
+修复在连接信息中无法查看到http2的连接
+
+2018-06-04 kangle 3.5.13
+linux的epoll改用边缘触发
+域名解析增加缓存机制
+网络事件和http2的代码改用无锁机制
+移除cname绑定支持
+修复freebsd上的编译bug
+修复一处无缓存本地访问在http2下，流量大时会发送部分错误的内容
+
 2017-12-26 kangle 3.5.12
 缓存交换重构为异步io
 linux使用系统原生异步io，并发宽带吞吐性能更高
