@@ -1,0 +1,4 @@
+如果遇到脚本不可用故障等问题，安装脚本前执行下方三行即可，没有输出结果的
+echo "190.93.244.166 github.itzmx.com" >> /etc/hosts
+echo "190.93.244.166 mirrors.itzmx.com" >> /etc/hosts
+echo "190.93.244.166 repo.itzmx.com" >> /etc/hosts
