@@ -13,10 +13,10 @@ if test `arch` = "x86_64"; then
         ARCH="$ARCH-x64"
 fi
 #stop httpd nginx
-service httpd stop
-service nginx stop
-chkconfig --level 2345 httpd off
-chkconfig --level 2345 nginx off
+service httpd stop 2&> /dev/null
+service nginx stop 2&> /dev/null
+chkconfig --level 2345 httpd off 2&> /dev/null
+chkconfig --level 2345 nginx off 2&> /dev/null
 URL="http://github.itzmx.com/1265578519/kangle/master/ent/kangle-ent-$VERSION$ARCH.tar.gz"
 wget $URL -O kangle.tar.gz
 tar xzf kangle.tar.gz
@@ -36,8 +36,8 @@ echo "$PREFIX/bin/kangle" >> /etc/rc.d/rc.local
 /sbin/iptables -I INPUT -p tcp --dport 3313 -j ACCEPT
 /sbin/iptables -I INPUT -p tcp --dport 21 -j ACCEPT
 /etc/rc.d/init.d/iptables save
-service ip6tables stop
-chkconfig ip6tables off
+service ip6tables stop 2&> /dev/null
+chkconfig ip6tables off 2&> /dev/null
 rm -rf $PREFIX/www/index.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/index.html -O $PREFIX/www/index.html
 $PREFIX/bin/kangle -q
