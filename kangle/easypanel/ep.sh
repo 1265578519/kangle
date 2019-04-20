@@ -137,9 +137,9 @@ function stat_iptables
 	if [ !  -f /etc/init.d/iptables ] ; then
 		return;
 	fi
-	service iptables stop
-	chkconfig iptables off
-	/etc/init.d/iptables stop
+	service iptables stop 2&> /dev/null
+	chkconfig iptables off 2&> /dev/null
+	/etc/init.d/iptables stop 2&> /dev/null
 	/etc/init.d/iptables save
 	return;
 	/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT
@@ -306,7 +306,7 @@ function del_proftpd
 	#rm -f /etc/init.d/proftpd
 	#rm -f /etc/rc.d/rc3.d/S96proftpd
 	#rm -f /etc/rc.d/rc5.d/S96proftpd
-	chkconfig proftpd off
+	chkconfig proftpd off 2&> /dev/null
 	killall proftpd
 	
 }
@@ -316,8 +316,8 @@ function setup_webalizer
 	if [ ! -f /usr/bin/webalizer ] ; then
 		yum -y install webalizer
 	fi
-	chkconfig httpd off
-	chkconfig nginx off
+	chkconfig httpd off 2&> /dev/null
+	chkconfig nginx off 2&> /dev/null
 	return;
 }
 function write_partner
@@ -335,8 +335,8 @@ fi
 ent=`/vhs/kangle/bin/kangle -v |grep "enterprise" -o`
 echo "ent="$ent;
 echo $PHPNAME
-service httpd stop
-service nginx stop
+service httpd stop 2&> /dev/null
+service nginx stop 2&> /dev/null
 mkdir tmp
 cd tmp
 setup_system
