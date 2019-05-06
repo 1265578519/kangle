@@ -29,6 +29,7 @@ wget http://github.itzmx.com/1265578519/kangle/master/ent/license/Ultimate/licen
 ./install.sh $PREFIX
 $PREFIX/bin/kangle
 echo "$PREFIX/bin/kangle" >> /etc/rc.d/rc.local
+chmod +x /etc/rc.d/rc.local
 /sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 /sbin/iptables -I INPUT -p tcp --dport 443 -j ACCEPT
 /sbin/iptables -I INPUT -p tcp --dport 3311 -j ACCEPT
@@ -38,6 +39,8 @@ echo "$PREFIX/bin/kangle" >> /etc/rc.d/rc.local
 /etc/rc.d/init.d/iptables save
 service ip6tables stop 2&> /dev/null
 chkconfig ip6tables off 2&> /dev/null
+systemctl stop firewalld 2&> /dev/null
+systemctl disable firewalld 2&> /dev/null
 rm -rf $PREFIX/www/index.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/index.html -O $PREFIX/www/index.html
 $PREFIX/bin/kangle -q
