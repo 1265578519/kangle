@@ -9,6 +9,7 @@ cd libzip-1.3.2
 ./configure
 make -j 4
 make install
+cd ..
 mv -f /usr/lib64/libzip.so.5 /usr/lib64/libzip.so.5.bak
 ln -s /usr/local/lib/libzip.so.5 /usr/lib64/libzip.so.5
 PREFIX="/vhs/kangle/ext"
