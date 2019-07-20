@@ -13,7 +13,7 @@ cd ..
 mv -f /usr/lib64/libzip.so.5 /usr/lib64/libzip.so.5.bak
 ln -s /usr/local/lib/libzip.so.5 /usr/lib64/libzip.so.5
 PREFIX="/vhs/kangle/ext"
-wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.3/730/completed/tpl_php737.tar.bz2 -O tpl_php737.tar.bz2
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.3/737/completed/tpl_php737.tar.bz2 -O tpl_php737.tar.bz2
 tar xjf tpl_php737.tar.bz2
 mv tpl_php737 $PREFIX
 rm -rf /tmp/*
