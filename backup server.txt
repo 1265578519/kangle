@@ -1,8 +1,8 @@
 如果遇到脚本不可用故障等问题，安装脚本前执行下方三行即可，没有输出结果的
-echo "104.28.23.230 github.itzmx.com" >> /etc/hosts
-echo "104.28.23.230 mirrors.itzmx.com" >> /etc/hosts
-echo "104.28.23.230 repo.itzmx.com" >> /etc/hosts
+echo "47.52.152.44 github.itzmx.com" >> /etc/hosts
+echo "47.52.152.44 mirrors.itzmx.com" >> /etc/hosts
+echo "47.52.152.44 repo.itzmx.com" >> /etc/hosts
 
 
 国内下载速度测试
-wget --header="Host: github.itzmx.com" http://104.28.23.230/1265578519/ShanaEncoder/master/4.9.0.1/ShanaEncoder%20V4.9.0.1%20%E5%AE%8C%E6%95%B4%E7%89%88%E7%BB%BF%E8%89%B2%E5%8E%8B%E7%BC%A9%E5%8C%85.7z -O test
+wget --header="Host: github.itzmx.com" http://47.52.152.44/1265578519/ShanaEncoder/master/4.9.0.1/ShanaEncoder%20V4.9.0.1%20%E5%AE%8C%E6%95%B4%E7%89%88%E7%BB%BF%E8%89%B2%E5%8E%8B%E7%BC%A9%E5%8C%85.7z -O test
