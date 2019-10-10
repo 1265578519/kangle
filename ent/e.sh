@@ -44,7 +44,5 @@ systemctl disable firewalld 2&> /dev/null
 rm -rf $PREFIX/www/index.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/index.html -O $PREFIX/www/index.html
 $PREFIX/bin/kangle -q
-killall -9 kangle
-sleep 3
 $PREFIX/bin/kangle -z /var/cache/kangle
 $PREFIX/bin/kangle
