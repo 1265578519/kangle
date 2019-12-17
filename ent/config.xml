@@ -92,8 +92,12 @@
 	<response action='allow' >
 	<table name='BEGIN'>
 			<chain  action='continue' >
-				<acl_header header='Content-Type' regex='1'><![CDATA[(text/*)|(javascript)|(image/*)]]></acl_header>
+				<acl_header header='Content-Type' regex='1'><![CDATA[(text/*)|(javascript)]]></acl_header>
 				<mark_response_flag   flagvalue='gzip,'></mark_response_flag>
+			</chain>
+			<chain  action='continue' >
+				<acl_header header='Content-Type' regex='1'><![CDATA[(text/*)|(javascript)]]></acl_header>
+				<mark_add_header   attr='Vary' val='Accept-Encoding'></mark_add_header>
 			</chain>
 			<chain  action='continue' >
 				<mark_cookie   cookie='.' http_only='1'></mark_cookie>
