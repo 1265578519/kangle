@@ -266,7 +266,7 @@
 <mime_type ext='zlib' type='application/x-deflate' max_age='31536000'/>
 	</vhs>
 	<vh name='default' doc_root='www'>
-	<mime_type ext='html' type='text/html' gzip='1' max_age='60'/>
+	<mime_type ext='html' type='text/html' gzip='1' max_age='10'/>
 		<host>*</host>
 	</vh>
 </config>
