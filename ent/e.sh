@@ -52,6 +52,6 @@ $PREFIX/bin/kangle -z /var/cache/kangle
 wget http://github.itzmx.com/1265578519/kangle/master/dso/kangle-dso-v1.1.zip -O kangle-dso.zip
 unzip -o kangle-dso.zip
 cd dso
-mv bin $PREFIX
-mv ext $PREFIX
+\cp -rf bin $PREFIX
+\cp -rf ext $PREFIX
 $PREFIX/bin/kangle
