@@ -17,6 +17,9 @@ service httpd stop 2&> /dev/null
 service nginx stop 2&> /dev/null
 chkconfig --level 2345 httpd off 2&> /dev/null
 chkconfig --level 2345 nginx off 2&> /dev/null
+#yum install
+yum -y install libjpeg-turbo libtiff libpng unzip
+#kangle install
 URL="http://github.itzmx.com/1265578519/kangle/master/ent/kangle-ent-$VERSION$ARCH.tar.gz"
 wget $URL -O kangle.tar.gz
 tar xzf kangle.tar.gz
@@ -45,4 +48,10 @@ rm -rf $PREFIX/www/index.html
 wget http://github.itzmx.com/1265578519/kangle/master/easypanel/index.html -O $PREFIX/www/index.html
 $PREFIX/bin/kangle -q
 $PREFIX/bin/kangle -z /var/cache/kangle
+#dso install
+wget http://github.itzmx.com/1265578519/kangle/master/dso/kangle-dso-v1.1.zip -O kangle-dso.zip
+unzip -o kangle-dso.zip
+cd dso
+mv bin $PREFIX
+mv ext $PREFIX
 $PREFIX/bin/kangle
