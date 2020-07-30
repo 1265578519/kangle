@@ -1,5 +1,6 @@
 #!/bin/bash
 VERSION="3.5.21.10"
+DSOVERSION="3.5.21.10"
 if test $# != 1;then
         echo "Usage: $0 dir"
         exit 1;
@@ -49,7 +50,7 @@ wget http://github.itzmx.com/1265578519/kangle/master/easypanel/index.html -O $P
 $PREFIX/bin/kangle -q
 $PREFIX/bin/kangle -z /var/cache/kangle
 #dso install
-wget http://github.itzmx.com/1265578519/kangle/master/dso/kangle-dso-$VERSION.zip -O kangle-dso.zip
+wget http://github.itzmx.com/1265578519/kangle/master/dso/kangle-dso-$DSOVERSION.zip -O kangle-dso.zip
 unzip -o kangle-dso.zip
 cd dso
 \cp -rf bin $PREFIX
