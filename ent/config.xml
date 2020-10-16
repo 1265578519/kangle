@@ -111,6 +111,18 @@
 				<acl_status_code op='gt' code='400'></acl_status_code>
 				<mark_response_flag   flagvalue='nocache,nodiskcache,'></mark_response_flag>
 			</chain>
+			<chain  action='continue' >
+				<acl_listen_ports  split='|'>3313</acl_listen_ports>
+				<acl_reg_path  nc='1' path='/mysql/(changelog|url).php'></acl_reg_path>
+				<mark_add_header   attr='X-Frame-Options' val='SAMEORIGIN' force='0'></mark_add_header>
+			</chain>
+			<chain  action='deny' >
+				<acl_listen_ports  split='|'>3313</acl_listen_ports>
+				<acl_header header='Content-Type' nc='1'><![CDATA[text/html]]></acl_header>
+				<acl_header header='Cache-Control' nc='1'><![CDATA[pre-check=10800]]></acl_header>
+				<acl_header revers='1' header='WWW-Authenticate' nc='1'><![CDATA[Basic realm="phpMyAdmin localhost"]]></acl_header>
+				<acl_header revers='1' header='X-Frame-Options' nc='1'><![CDATA[SAMEORIGIN]]></acl_header>
+			</chain>
 		</table>
 	</response>
 	<vhs index='index.html,index.htm' error_404='/404.html' error_403='/403.html'>
