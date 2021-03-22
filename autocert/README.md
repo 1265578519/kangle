@@ -9,15 +9,19 @@ kangle web server的自动创建ssl证书，仅支持kangle 3.5.21以上版本�
 1.  下载源码,`git clone https://gitee.com/keengo/autocert`
 2.  `go build autocert`
 3.  编译后生成的autocert放入kangle的bin目录。
+4.  如遇到编译报错，需要另外下载go.sum
 
 #### 使用说明
 
-1.  增加域名:
+1.  执行权限:
+`chmod +x autocert`
+2.  增加域名:
 `./autocert -a domain1,domain2,..`
-2.  删除域名
+3.  删除域名
 `./autocert -d domain1,domain2,...`
-3.  列出域名
+4.  列出域名
 `./autocert -l`
+5.  申请成功的证书文件在 /vhs/kangle/etc/ssl目录中
 
 #### 参与贡献
 
