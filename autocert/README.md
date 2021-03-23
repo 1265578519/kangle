@@ -14,14 +14,16 @@ kangle web server的自动创建ssl证书，仅支持kangle 3.5.21以上版本�
 #### 使用说明
 
 1.  执行权限:
-`chmod +x autocert`
+`chmod +x /vhs/kangle/bin/autocert`
 2.  增加域名:
-`./autocert -a domain1,domain2,..`
+`/vhs/kangle/bin/autocert -a domain1,domain2,...`
 3.  删除域名
-`./autocert -d domain1,domain2,...`
+`/vhs/kangle/bin/autocert -d domain1,domain2,...`
 4.  列出域名
-`./autocert -l`
-5.  申请成功的证书文件在 /vhs/kangle/etc/ssl目录中
+`/vhs/kangle/bin/autocert -l`
+5.  申请成功的证书文件在 /vhs/kangle/etc/ssl 目录中
+
+注：在网站解析的节点中操作申请，申请到的ssl文件下载回本地电脑中，然后记事本打开复制内容填入主控上面即可
 
 #### 参与贡献
 
