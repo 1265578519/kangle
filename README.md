@@ -56,6 +56,38 @@ kangle web server 8核心8G内存VPS实测跑60W并发连接数妥妥的
 
 kangle web server 更新日志
 -------
+2020-06-19 kangle 3.5.21
+*支持br压缩
+*支持新的dso模块
+*修复一些错误
+
+2019-12-27 kangle 3.5.19
+*支持vary缓存
+*增加vary标记模块
+*3311缓存统计，分别统计内存和磁盘缓存数量
+
+2019-11-19 kangle 3.5.18
+*支持openssl 1.1.1
+*支持tls 1.3和early data
+*支持tcp fastopen
+*发送http请求到https端口，显示友好信息或配置自动重定向到https
+*修改server_software无需重起生效
+*其他细节优化
+
+2019-06-10 kangle 3.5.16
+*修复websocket和gzip压缩冲突的bug
+*meth匹配模块支持多个
+*修复ajp协议的几个bug.
+*扩展映射确认文件存在，新增一个确认不存在。
+*修复freebsd上编译的bug.
+
+2019-05-10 kangle 3.5.15
+*底层异步io，抽出为kasync库，采用c编写，方便移植,结构更清晰
+*去掉cgi/uwsgi/scgi/hmux协议支持
+*性能有一定的提升
+*修复centos 7上存在的一些问题
+*windows采用exe替换msi安装包
+
 2018-08-22 kangle 3.5.14
 修复无法和openssl 1.1.0编译的bug
 linux下编译无需依赖libaio.h
