@@ -98,9 +98,9 @@ make -j 4
 make install
 cd ..
 #install memcache
-wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.4/7433/php-memcache-4.0.4-dev.zip
-unzip -o php-memcache-4.0.4-dev.zip
-cd php-memcache-4.0.4-dev
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/7.4/7433/php-memcache-8.2.zip
+unzip -o php-memcache-8.2.zip
+cd php-memcache-8.2
 /vhs/kangle/ext/tpl_php7433/bin/phpize
 ./configure --with-php-config=/vhs/kangle/ext/tpl_php7433/bin/php-config
 make -j 4
