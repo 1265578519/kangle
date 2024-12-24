@@ -24,6 +24,17 @@ make install
 ln -s /usr/local/lib/pkgconfig/sqlite3.pc /usr/lib64/pkgconfig/sqlite3.pc
 echo "/usr/local/lib" > /etc/ld.so.conf.d/sqlite3.conf
 ldconfig -v
+wget http://xmlsoft.org/sources/libxml2-2.9.0.tar.gz
+tar -zxvf libxml2-2.9.0.tar.gz
+cd libxml2-2.9.0
+./configure
+make -j 4
+make install
+rm -rf /usr/bin/xml2-config.OFF
+mv /usr/bin/xml2-config /usr/bin/xml2-config.OFF
+ln -s /usr/local/lib/pkgconfig/libxml-2.0.pc /usr/lib64/pkgconfig/libxml-2.0.pc
+ln -s /usr/local/bin/xml2-config /usr/bin/xml2-config
+ldconfig -v
 PREFIX="/vhs/kangle/ext/tpl_php8030"
 ZEND_ARCH="i386"
 LIB="lib"
@@ -89,9 +100,9 @@ make -j 4
 make install
 cd ..
 #install memcached
-wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.0/8030/php-memcached-3.1.3-dev.zip
-unzip -o php-memcached-3.1.3-dev.zip
-cd php-memcached-3.1.3-dev
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.0/8030/php-memcached-3.3.0.zip
+unzip -o php-memcached-3.3.0.zip
+cd php-memcached-3.3.0
 /vhs/kangle/ext/tpl_php8030/bin/phpize
 ./configure --with-php-config=/vhs/kangle/ext/tpl_php8030/bin/php-config --disable-memcached-sasl
 make -j 4
