@@ -21,6 +21,7 @@ cd sqlite-autoconf-3470200
 ./configure
 make -j 4
 make install
+cd ..
 ln -s /usr/local/lib/pkgconfig/sqlite3.pc /usr/lib64/pkgconfig/sqlite3.pc
 echo "/usr/local/lib" > /etc/ld.so.conf.d/sqlite3.conf
 ldconfig -v
@@ -30,6 +31,7 @@ cd libxml2-2.9.0
 ./configure
 make -j 4
 make install
+cd ..
 rm -rf /usr/bin/xml2-config.OFF
 mv /usr/bin/xml2-config /usr/bin/xml2-config.OFF
 ln -s /usr/local/lib/pkgconfig/libxml-2.0.pc /usr/lib64/pkgconfig/libxml-2.0.pc
@@ -41,6 +43,7 @@ cd curl-7.76.1
 ./configure
 make -j 4
 make install
+cd ..
 ln -s /usr/local/lib/pkgconfig/libcurl.pc /usr/lib64/pkgconfig/libcurl.pc
 ldconfig -v
 PREFIX="/vhs/kangle/ext/tpl_php8030"

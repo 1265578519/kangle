@@ -12,6 +12,9 @@ make install
 cd ..
 mv -f /usr/lib64/libzip.so.5 /usr/lib64/libzip.so.5.bak
 ln -s /usr/local/lib/libzip.so.5 /usr/lib64/libzip.so.5
+ln -s /usr/local/lib/pkgconfig/libzip.pc /usr/lib64/pkgconfig/libzip.pc
+echo '/usr/local/lib' > /etc/ld.so.conf.d/libzip.conf
+ldconfig -v
 PREFIX="/vhs/kangle/ext"
 wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.0/8030/completed/tpl_php8030.tar.bz2 -O tpl_php8030.tar.bz2
 tar xjf tpl_php8030.tar.bz2

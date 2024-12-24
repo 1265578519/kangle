@@ -21,6 +21,7 @@ cd sqlite-autoconf-3470200
 ./configure
 make -j 4
 make install
+cd ..
 ln -s /usr/local/lib/pkgconfig/sqlite3.pc /usr/lib64/pkgconfig/sqlite3.pc
 echo "/usr/local/lib" > /etc/ld.so.conf.d/sqlite3.conf
 ldconfig -v
