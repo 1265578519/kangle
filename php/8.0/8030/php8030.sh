@@ -35,6 +35,14 @@ mv /usr/bin/xml2-config /usr/bin/xml2-config.OFF
 ln -s /usr/local/lib/pkgconfig/libxml-2.0.pc /usr/lib64/pkgconfig/libxml-2.0.pc
 ln -s /usr/local/bin/xml2-config /usr/bin/xml2-config
 ldconfig -v
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.0/8030/curl-7.76.1.tar.bz2
+tar xjf curl-7.76.1.tar.bz2
+cd curl-7.76.1
+./configure
+make -j 4
+make install
+ln -s /usr/local/lib/pkgconfig/libcurl.pc /usr/lib64/pkgconfig/libcurl.pc
+ldconfig -v
 PREFIX="/vhs/kangle/ext/tpl_php8030"
 ZEND_ARCH="i386"
 LIB="lib"
