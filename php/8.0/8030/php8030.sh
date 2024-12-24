@@ -24,7 +24,7 @@ make install
 ln -s /usr/local/lib/pkgconfig/sqlite3.pc /usr/lib64/pkgconfig/sqlite3.pc
 echo "/usr/local/lib" > /etc/ld.so.conf.d/sqlite3.conf
 ldconfig -v
-wget http://xmlsoft.org/sources/libxml2-2.9.0.tar.gz
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.0/8030/libxml2-2.9.0.tar.gz
 tar -zxvf libxml2-2.9.0.tar.gz
 cd libxml2-2.9.0
 ./configure
