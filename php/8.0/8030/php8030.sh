@@ -69,11 +69,6 @@ if [ ! -f $PREFIX/config.xml ]; then
 fi
 cd ..
 wget http://github.itzmx.com/1265578519/kangle/master/php/8.0/8030/php-templete.ini -O $PREFIX/php-templete.ini
-#install ioncube
-wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.0/8030/ioncube-$ZEND_ARCH-8.1.zip
-unzip ioncube-$ZEND_ARCH-8.1.zip
-mkdir -p $PREFIX/ioncube
-mv ioncube_loader_lin_8.1.so $PREFIX/ioncube/ioncube_loader_lin_8.1.so
 #install autoconf
 wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.0/8030/autoconf-2.69.tar.gz
 tar zxf autoconf-2.69.tar.gz
