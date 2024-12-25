@@ -53,6 +53,7 @@ cd openssl-1.1.1k
 make -j 4
 make test
 make install
+cd ..
 rm -rf /usr/bin/openssl.OFF
 mv /usr/bin/openssl /usr/bin/openssl.OFF
 ln -s /usr/local/lib64/libssl.so.1.1 /usr/lib64/libssl.so.1.1
