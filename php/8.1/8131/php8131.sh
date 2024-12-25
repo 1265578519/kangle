@@ -1,7 +1,7 @@
 #!/bin/sh
 yum -y install bzip2-devel db4-devel libjpeg-devel libpng-devel freetype-devel pcre-devel zlib-devel libmcrypt-devel unzip bzip2
 yum -y install mhash-devel openssl-devel
-yum -y install libtool-ltdl libtool-ltdl-devel
+yum -y install libtool-ltdl libtool-ltdl-devel perl-devel perl-core
 yum -y remove libzip-devel sqlite-devel libxml2-devel curl-devel
 wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.1/8131/libzip-1.3.2.tar.gz -O libzip-1.3.2.tar.gz
 tar xvf libzip-1.3.2.tar.gz
@@ -46,6 +46,23 @@ make install
 cd ..
 ln -s /usr/local/lib/pkgconfig/libcurl.pc /usr/lib64/pkgconfig/libcurl.pc
 ldconfig -v
+wget http://github.itzmx.com/1265578519/kangle/master/php/8.1/8131/openssl-1.1.1k.tar.gz
+tar -zxvf openssl-1.1.1k.tar.gz
+cd openssl-1.1.1k
+./config shared zlib
+make -j 4
+make test
+make install
+rm -rf /usr/bin/openssl.OFF
+mv /usr/bin/openssl /usr/bin/openssl.OFF
+ln -s /usr/local/lib64/libssl.so.1.1 /usr/lib64/libssl.so.1.1
+ln -s /usr/local/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.1.1
+ln -s /usr/local/bin/openssl /usr/bin/openssl
+ln -s /usr/local/lib64/pkgconfig/libcrypto.pc /usr/lib64/pkgconfig/libcrypto.pc
+ln -s /usr/local/lib64/pkgconfig/libssl.pc /usr/lib64/pkgconfig/libssl.pc
+ln -s /usr/local/lib64/pkgconfig/openssl.pc /usr/lib64/pkgconfig/openssl.pc
+ldconfig -v
+yum -y remove openssl-devel
 PREFIX="/vhs/kangle/ext/tpl_php8131"
 ZEND_ARCH="i386"
 LIB="lib"
