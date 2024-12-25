@@ -58,11 +58,11 @@ mv /usr/bin/openssl /usr/bin/openssl.OFF
 ln -s /usr/local/lib64/libssl.so.1.1 /usr/lib64/libssl.so.1.1
 ln -s /usr/local/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.1.1
 ln -s /usr/local/bin/openssl /usr/bin/openssl
+ldconfig -v
+yum -y remove openssl-devel
 ln -s /usr/local/lib64/pkgconfig/libcrypto.pc /usr/lib64/pkgconfig/libcrypto.pc
 ln -s /usr/local/lib64/pkgconfig/libssl.pc /usr/lib64/pkgconfig/libssl.pc
 ln -s /usr/local/lib64/pkgconfig/openssl.pc /usr/lib64/pkgconfig/openssl.pc
-ldconfig -v
-yum -y remove openssl-devel
 PREFIX="/vhs/kangle/ext/tpl_php8131"
 ZEND_ARCH="i386"
 LIB="lib"
