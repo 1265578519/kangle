@@ -37,9 +37,9 @@ mv /usr/bin/xml2-config /usr/bin/xml2-config.OFF
 ln -s /usr/local/lib/pkgconfig/libxml-2.0.pc /usr/lib64/pkgconfig/libxml-2.0.pc
 ln -s /usr/local/bin/xml2-config /usr/bin/xml2-config
 ldconfig -v
-wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.0/8030/curl-7.76.1.tar.bz2
-tar xjf curl-7.76.1.tar.bz2
-cd curl-7.76.1
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.0/8030/curl-7.76.0.tar.bz2
+tar xjf curl-7.76.0.tar.bz2
+cd curl-7.76.0
 ./configure
 make -j 4
 make install
