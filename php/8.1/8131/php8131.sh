@@ -2,32 +2,8 @@
 yum -y install bzip2-devel db4-devel libjpeg-devel libpng-devel freetype-devel pcre-devel zlib-devel libmcrypt-devel unzip bzip2
 yum -y install mhash-devel openssl-devel
 yum -y install libtool-ltdl libtool-ltdl-devel perl-devel perl-core
-yum -y install wget bzip2 make automake gcc gcc-c++ gmp-devel mpfr-devel libmpc-devel
-wget https://mirrors.aliyun.com/gnu/gcc/gcc-9.5.0/gcc-9.5.0.tar.gz
-tar zxf gcc-9.5.0.tar.gz
-cd gcc-9.5.0
-./configure --enable-checking=release --enable-languages=c,c++ --disable-multilib --with-system-zlib --disable-nls
-make -j 4
-make install
-cd ..
-rm -rf /usr/bin/gcc.OFF
-mv /usr/bin/gcc /usr/bin/gcc.OFF
-ln -s /usr/local/bin/gcc /usr/bin/gcc
-/usr/bin/gcc --version
-yum -y install wget bzip2 make automake gcc gcc-c++ texinfo
-wget https://mirrors.aliyun.com/gnu/binutils/binutils-2.38.tar.gz
-tar zxf binutils-2.38.tar.gz
-cd binutils-2.38
-./configure --with-system-zlib --disable-nls
-make -j 4
-make install
-cd ..
-rm -rf /usr/bin/as.OFF
-mv /usr/bin/as /usr/bin/as.OFF
-ln -s /usr/local/bin/as /usr/bin/as
-/usr/bin/as --version
-yum -y remove libzip-devel sqlite-devel libxml2-devel curl-devel
-wget http://github.itzmx.com/1265578519/kangle/master/php/8.1/8131/openssl-1.1.1k.tar.gz
+yum -y install wget bzip2 make automake gcc gcc-c++ gmp-devel mpfr-devel libmpc-devel texinfo
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.1/8131/openssl-1.1.1k.tar.gz
 tar -zxvf openssl-1.1.1k.tar.gz
 cd openssl-1.1.1k
 ./config shared zlib
@@ -41,10 +17,32 @@ ln -s /usr/local/lib64/libssl.so.1.1 /usr/lib64/libssl.so.1.1
 ln -s /usr/local/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.1.1
 ln -s /usr/local/bin/openssl /usr/bin/openssl
 ldconfig -v
-yum -y remove openssl-devel
+yum -y remove libzip-devel sqlite-devel libxml2-devel curl-devel openssl-devel
 ln -s /usr/local/lib64/pkgconfig/libcrypto.pc /usr/lib64/pkgconfig/libcrypto.pc
 ln -s /usr/local/lib64/pkgconfig/libssl.pc /usr/lib64/pkgconfig/libssl.pc
 ln -s /usr/local/lib64/pkgconfig/openssl.pc /usr/lib64/pkgconfig/openssl.pc
+wget -c https://mirrors.aliyun.com/gnu/gcc/gcc-5.5.0/gcc-5.5.0.tar.gz
+tar zxf gcc-5.5.0.tar.gz
+cd gcc-5.5.0
+./configure --enable-checking=release --enable-languages=c,c++ --disable-multilib --with-system-zlib --disable-nls
+make -j 4
+make install
+cd ..
+rm -rf /usr/bin/gcc.OFF
+mv /usr/bin/gcc /usr/bin/gcc.OFF
+ln -s /usr/local/bin/gcc /usr/bin/gcc
+/usr/bin/gcc --version
+wget -c https://mirrors.aliyun.com/gnu/binutils/binutils-2.38.tar.gz
+tar zxf binutils-2.38.tar.gz
+cd binutils-2.38
+./configure --with-system-zlib --disable-nls
+make -j 4
+make install
+cd ..
+rm -rf /usr/bin/as.OFF
+mv /usr/bin/as /usr/bin/as.OFF
+ln -s /usr/local/bin/as /usr/bin/as
+/usr/bin/as --version
 wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.1/8131/libzip-1.3.2.tar.gz -O libzip-1.3.2.tar.gz
 tar xvf libzip-1.3.2.tar.gz
 cd libzip-1.3.2
@@ -142,6 +140,23 @@ tar zxf apcu-5.1.24.tgz
 cd apcu-5.1.24
 /vhs/kangle/ext/tpl_php8131/bin/phpize
 ./configure --with-php-config=/vhs/kangle/ext/tpl_php8131/bin/php-config
+make -j 4
+make install
+cd ..
+#install libmemcached
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.1/8131/libmemcached-1.0.18.tar.gz
+tar -zxvf libmemcached-1.0.18.tar.gz
+cd libmemcached-1.0.18
+./configure
+make -j 4
+make install
+cd ..
+#install memcached
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.1/8131/php-memcached-3.3.0.zip
+unzip -o php-memcached-3.3.0.zip
+cd php-memcached-3.3.0
+/vhs/kangle/ext/tpl_php8131/bin/phpize
+./configure --with-php-config=/vhs/kangle/ext/tpl_php8131/bin/php-config --disable-memcached-sasl
 make -j 4
 make install
 cd ..

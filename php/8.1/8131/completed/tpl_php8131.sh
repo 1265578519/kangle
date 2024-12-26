@@ -2,7 +2,6 @@
 yum -y install bzip2-devel libxml2-devel curl-devel db4-devel libjpeg-devel libpng-devel freetype-devel pcre-devel zlib-devel sqlite-devel libmcrypt-devel unzip bzip2
 yum -y install mhash-devel openssl-devel
 yum -y install libtool-ltdl libtool-ltdl-devel perl-devel perl-core
-yum -y remove libzip-devel
 wget http://github.itzmx.com/1265578519/kangle/master/php/8.1/8131/openssl-1.1.1k.tar.gz
 tar -zxvf openssl-1.1.1k.tar.gz
 cd openssl-1.1.1k
@@ -17,7 +16,7 @@ ln -s /usr/local/lib64/libssl.so.1.1 /usr/lib64/libssl.so.1.1
 ln -s /usr/local/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.1.1
 ln -s /usr/local/bin/openssl /usr/bin/openssl
 ldconfig -v
-yum -y remove openssl-devel
+yum -y remove libzip-devel openssl-devel
 ln -s /usr/local/lib64/pkgconfig/libcrypto.pc /usr/lib64/pkgconfig/libcrypto.pc
 ln -s /usr/local/lib64/pkgconfig/libssl.pc /usr/lib64/pkgconfig/libssl.pc
 ln -s /usr/local/lib64/pkgconfig/openssl.pc /usr/lib64/pkgconfig/openssl.pc
