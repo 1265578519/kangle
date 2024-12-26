@@ -2,6 +2,30 @@
 yum -y install bzip2-devel db4-devel libjpeg-devel libpng-devel freetype-devel pcre-devel zlib-devel libmcrypt-devel unzip bzip2
 yum -y install mhash-devel openssl-devel
 yum -y install libtool-ltdl libtool-ltdl-devel perl-devel perl-core
+yum -y install wget bzip2 make automake gcc gcc-c++ gmp-devel mpfr-devel libmpc-devel
+wget https://mirrors.aliyun.com/gnu/gcc/gcc-9.5.0/gcc-9.5.0.tar.gz
+tar zxf gcc-9.5.0.tar.gz
+cd gcc-9.5.0
+./configure --enable-checking=release --enable-languages=c,c++ --disable-multilib --with-system-zlib --disable-nls
+make -j 4
+make install
+cd ..
+rm -rf /usr/bin/gcc.OFF
+mv /usr/bin/gcc /usr/bin/gcc.OFF
+ln -s /usr/local/bin/gcc /usr/bin/gcc
+/usr/bin/gcc --version
+yum -y install wget bzip2 make automake gcc gcc-c++ texinfo
+wget https://mirrors.aliyun.com/gnu/binutils/binutils-2.38.tar.gz
+tar zxf binutils-2.38.tar.gz
+cd binutils-2.38
+./configure --with-system-zlib --disable-nls
+make -j 4
+make install
+cd ..
+rm -rf /usr/bin/as.OFF
+mv /usr/bin/as /usr/bin/as.OFF
+ln -s /usr/local/bin/as /usr/bin/as
+/usr/bin/as --version
 yum -y remove libzip-devel sqlite-devel libxml2-devel curl-devel
 wget http://github.itzmx.com/1265578519/kangle/master/php/8.1/8131/openssl-1.1.1k.tar.gz
 tar -zxvf openssl-1.1.1k.tar.gz
