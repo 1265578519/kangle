@@ -112,28 +112,11 @@ make -j 4
 make install
 cd ..
 #install apcu
-wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.1/8131/apcu-5.1.17.tgz
-tar zxf apcu-5.1.17.tgz
-cd apcu-5.1.17
+wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.1/8131/apcu-5.1.24.tgz
+tar zxf apcu-5.1.24.tgz
+cd apcu-5.1.24
 /vhs/kangle/ext/tpl_php8131/bin/phpize
 ./configure --with-php-config=/vhs/kangle/ext/tpl_php8131/bin/php-config
-make -j 4
-make install
-cd ..
-#install libmemcached
-wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.1/8131/libmemcached-1.0.18.tar.gz
-tar -zxvf libmemcached-1.0.18.tar.gz
-cd libmemcached-1.0.18
-./configure
-make -j 4
-make install
-cd ..
-#install memcached
-wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.1/8131/php-memcached-3.3.0.zip
-unzip -o php-memcached-3.3.0.zip
-cd php-memcached-3.3.0
-/vhs/kangle/ext/tpl_php8131/bin/phpize
-./configure --with-php-config=/vhs/kangle/ext/tpl_php8131/bin/php-config --disable-memcached-sasl
 make -j 4
 make install
 cd ..
