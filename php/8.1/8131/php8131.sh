@@ -98,6 +98,7 @@ if [ ! -f $PREFIX/config.xml ]; then
 fi
 cd ..
 wget http://github.itzmx.com/1265578519/kangle/master/php/8.1/8131/php-templete.ini -O $PREFIX/php-templete.ini
+wget http://github.itzmx.com/1265578519/kangle/master/php/8.1/8131/cacert.pem -O $PREFIX/cacert.pem
 #install ioncube
 wget -c http://github.itzmx.com/1265578519/kangle/master/php/8.1/8131/ioncube-$ZEND_ARCH-8.1.zip
 unzip ioncube-$ZEND_ARCH-8.1.zip
